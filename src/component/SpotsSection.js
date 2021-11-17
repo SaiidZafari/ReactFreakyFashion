@@ -1,6 +1,6 @@
 import SpotsApp from "./SpotsApp";
 
-function SpotsSection() {
+function SpotsSection({products}) {
 
   const position = "25%";
 
@@ -12,7 +12,7 @@ function SpotsSection() {
     
   return (
     <div className="SpotsSection">
-      <div className="SpotsSection-content m-1 d-flex justify-content-between">
+      <div className="SpotsSection-content m-1 d-flex justify-content-between align-items-center">
         <SpotsApp titlePosition={position} />
         <SpotsApp imageUrl={imageUrl2} spotsTitle={spotsTitle2} />
         <SpotsApp
