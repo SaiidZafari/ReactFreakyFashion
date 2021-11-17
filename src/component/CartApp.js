@@ -7,7 +7,7 @@ function CartApp({
   imageUrl = "Freestocks.jpg",
 }) {
   return (
-    <div className="InfoCart m-1 col-md-3">
+    <div className="InfoCart p-1 col-md-3">
       <a
         href="/Products/CartApp"
         className="InfoCart-content cart  align-content-center text-decoration-none text-reset"

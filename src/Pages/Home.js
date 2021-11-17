@@ -8,28 +8,31 @@ import ProductSection from "../component/ProductSection";
 import Footer from "../component/Footer";
 import CopyRight from "../component/CopyRight";
 
-function Home() {
-    const pageName = "Home";
-    
-  const [productsApi, setProductsApi] = useState([]);
-//    useEffect(() => {
-//      console.log("useEffect invoked");
 
-//      fetch("http://localhost:4000/api/products")
-//       .then((res) => res.json())
-//       .then((product) => setProductsApi(product));
-//    }, []);
+function Home() {
+    // const pageName = "Home";
+
+    // const apiUrl = "http://localhost:4000/api/products";
+    
+    // const [productsApi, setProductsApi] = useState([]);
+    
+    // useEffect(() => {
+    //   fetch("http://localhost:4000/api/products")
+    //     .then((res) => res.json())
+    //     .then((prod) => setProductsApi(prod));
+    // });
+
 
   return (
     <div className="Home">
       <div className="Home-content">
         <Navigation />
         <div className="container">
-          <Header />
+          <Header pageTitle="Home" />
           <Card />
           <Hero />
           <Card />
-          <SpotsSection products={productsApi} />
+          <SpotsSection  />
           <Card />
           <ProductSection sectionTitle="Winter Collaction" />
           <Card />
