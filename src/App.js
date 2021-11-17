@@ -4,7 +4,7 @@ import Header from './component/Header';
 import Navigation from './component/Navigation';
 import InfoCart from "./component/InfoCart";
 import Hero from './component/Hero';
-import Spots from './component/Spots';
+import SpotsSection from "./component/SpotsSection";
 import Footer from './component/Footer';
 import CopyRight from "./component/CopyRight";
 
@@ -18,11 +18,7 @@ function App() {
         <Card />
         <Hero />
         <Card />
-        <div className="d-flex justify-content-between">
-          <Spots />
-          <Spots />
-          <Spots />
-        </div>
+        <SpotsSection/>
         <Card />
         <div className="d-flex"></div>
         <Card />

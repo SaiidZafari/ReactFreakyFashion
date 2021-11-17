@@ -1,0 +1,27 @@
+ 
+function SpotsApp({
+  imageUrl = `Hand.jpg`,
+  spotsTitle = "Fashion of art",
+  titlePosition = "50%",
+}) {
+  return (
+    <div className="card text-white spotsContent border-white">
+      <div class="card-img-overlay">
+        <p
+          style={{ marginTop: titlePosition , position: "relative", fontSize:"2vw" }}
+          className="bg-dark bg-opacity-50 "
+        >
+          {spotsTitle}
+        </p>
+      </div>
+          <img
+              style={{}}
+        className="spotsText m-1 rounded-3 "
+        src={process.env.PUBLIC_URL + `/images/${imageUrl}`}
+        alt="Hand"
+      />
+    </div>
+  );
+}
+ 
+export default SpotsApp;
