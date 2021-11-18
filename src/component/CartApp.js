@@ -1,15 +1,16 @@
- 
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function CartApp({
   productName = "Winter coat",
   productPrice = 1200,
-  cartTitle,
+  cartTitle="",
   imageUrl = "Freestocks.jpg",
 }) {
   return (
     <div className="InfoCart p-1 col-md-3">
-      <a
-        href="/Products/CartApp"
+      <Link
+        to={`/Products/${cartTitle}`}
         className="InfoCart-content cart  align-content-center text-decoration-none text-reset"
       >
         <p> {cartTitle} </p>
@@ -24,9 +25,9 @@ function CartApp({
           </p>
           <p className="fw-bold fs-5">{productPrice} SEK</p>
         </div>
-      </a>
+      </Link>
     </div>
   );
 }
- 
+
 export default CartApp;

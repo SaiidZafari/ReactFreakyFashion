@@ -1,30 +1,40 @@
+import { Link } from "react-router-dom";
+
 function Navigation() {
   return (
     <div class="">
       <ul className="nav bg-dark  justify-content-center mb-3 ">
         <li>
-          <a
+          <Link
             className="nav-link link-dark px-2 active fw-bold fs-5 text-white"
-            href="#"
+            to="/"
           >
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             className="nav-link link-dark px-2 active fw-bold fs-5 text-white"
-            href="#"
+            to="/products"
           >
             Products
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             className="nav-link link-dark px-2 active fw-bold fs-5 text-white"
-            href="#"
+            to="/products/:urlSlug"
+          >
+            Details
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link link-dark px-2 active fw-bold fs-5 text-white"
+            to="/search"
           >
             Search
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

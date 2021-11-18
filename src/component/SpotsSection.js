@@ -20,11 +20,11 @@ function SpotsSection({products}) {
           spotsTitle={title3}
           titlePosition="-2%"
         />
-        {/* <SpotsApp
+        <SpotsApp
           imageUrl="Dog.jpg"
           spotsTitle="Beast and beauty"
-          titlePosition="-5%"
-        /> */}
+          titlePosition="50%"
+        />
       </div>
     </div>
   );
