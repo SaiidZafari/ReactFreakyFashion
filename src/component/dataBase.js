@@ -6,7 +6,7 @@
        "Welcome to Fashion Freak. At, fashion freak, we bring to the industry best fashions in one store. Buy from our wide range of designer T-shirts, shirts, jeans, ...",
      price: "999",
      pageName: "Naeim Jafari",
-     imageUrl: `${process.env.PUBLIC_URL + 'Naeim-Jafari.jpg'}`,
+     imageUrl: process.env.PUBLIC_URL + 'Naeim-Jafari.jpg',
    },
    {
      id: 2,

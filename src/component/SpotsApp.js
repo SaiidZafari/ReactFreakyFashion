@@ -1,12 +1,17 @@
- 
+import { Link } from "react-router-dom";
+
 function SpotsApp({
-  imageUrl = `Hand.jpg`,
+  imageUrl = "Hand.jpg",
   spotsTitle = "Fashion of art",
   titlePosition = "50%",
+  linkTo=""
 }) {
   return (
     <div className="card border-white ">
-      <a href="#" className="card text-white spotsContent border-white">
+      <Link
+        to={`/Products/${linkTo}`}
+        className="card text-white spotsContent border-white"
+      >
         <div class="card-img-overlay">
           <p
             style={{
@@ -25,9 +30,9 @@ function SpotsApp({
           src={process.env.PUBLIC_URL + `/images/${imageUrl}`}
           alt="Hand"
         />
-      </a>
+      </Link>
     </div>
   );
 }
- 
+
 export default SpotsApp;

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Navigation() {
   return (
-    <div class="">
+    <div>
       <ul className="nav bg-dark  justify-content-center mb-3 ">
         <li>
           <Link
@@ -23,9 +23,9 @@ function Navigation() {
         <li>
           <Link
             className="nav-link link-dark px-2 active fw-bold fs-5 text-white"
-            to="/products/:urlSlug"
+            to="/shoppingList"
           >
-            Details
+            ShoppingList
           </Link>
         </li>
         <li>

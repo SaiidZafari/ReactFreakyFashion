@@ -1,31 +1,23 @@
-import { useState } from "react";
+// import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
-function Header({ pageTitle = "Page Name" }) {
-
-// const { filterQuery, setFilterQuery } = useState();
-// const filterArray = useState((state) => state.resetFilter);
-// const searchFilterFunction = (text) => {
-//   const newData = filterArray.filter((item) => {
-//     const itemData = item.teacher.toUpperCase();
-//     const textData = text.toUpperCase();
-//     return itemData.indexOf(textData) > -1;
-//   });
-//   setFilterQuery(newData);
-// };
-
+function Header() {
+ 
   return (
     <div className="Header">
       <div className="Header-content container">
         <div className="d-flex justify-content-between">
           <div>
-            <p
-              style={{ fontFamily: "Edwardian Script ITC" }}
-              className="text-black fs-1 fw-bold col-12"
-            >
-              Freaky Fashion
-            </p>
-            <p className="text-info fs-5">{pageTitle}</p>
+            <Link to="/" className="text-decoration-none">
+              <p
+                style={{ fontFamily: "Edwardian Script ITC", fontSize:"3em" }}
+                className="text-black fw-bold col-12"
+              >
+                Freaky Fashion
+              </p>
+            </Link>
+            <p className="text-info fs-5"></p>
           </div>
           <div>
             <input

@@ -1,40 +1,40 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
-import Navigation from "../component/Navigation";
 
 import Hero from "../component/Hero";
 import SpotsSection from "../component/SpotsSection";
 import ProductSection from "../component/ProductSection";
+//import { products } from './../component/dataBase';
+//import {useSelector} from 'react-redux';
 
+function Home({ productsRedux }) {
+  //productsRedux = useSelector((state) => state.allProducts.products);
 
+  // const [productsApi, setProductApi] = useState(products);
 
-function Home() {
-  const pageName = "Home";
+  // ComponentDidMount(){
+  //   fetch('http://localhost:4000/api/products')
+  //     .then((resp) => resp.json())
+  //     .then((prod) => setProductApi(prod));
+  // }
 
-    // const apiLink = `http://localhost:4000/api/products`;
-
-    // const [productsApi, setProductApi] = useState([]);
-
-    // useEffect(() => {
-    //   fetch(apiLink)
-    //     .then((resp) => resp.json())
-    //     .then((products) => setProductApi(products));
-    // }, []);
-
+  const textHero = `Welcome to Fashion Freak. At, fashion freak, we bring to the industry best fashions in one store. Buy from our wide range of designer T-shirts, shirts, jeans, ... May 1, 2020 - Explore Roadkill Girl's board "Freaky Fashion", followed by 276 people on Pinterest. See more ideas about fashion, weird fashion, how to wear it.`;
 
   return (
     <div className="Home">
       <div className="Home-content">
-       
-          <Hero />
-          <Card />
-          <SpotsSection  />
-          <Card />
-          <ProductSection sectionTitle="Winter Collaction" />
-         
-        </div>
+        <Hero
+          titleHero="Fashion festival"
+          descriptionHero={textHero}
+          imgUrlHero="Woman.jpg"
+          altHero="Woman"
+        />
+        <Card />
+        <SpotsSection />
+        <Card />
+        <ProductSection sectionTitle="Popular Products" />
       </div>
-    
+    </div>
   );
 }
 

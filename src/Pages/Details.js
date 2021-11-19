@@ -1,31 +1,54 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
 
-import CartApp from "../component/CartApp";
-import { products } from './../component/dataBase';
+
 
 function Details() {
+ 
+  const productsRedux = useSelector((state) => state.allProducts.products);
 
-    const { urlSlug } = useParams();
+  const { urlSlug } = useParams();
+  
+  let product = productsRedux.find( p => p.pageName === urlSlug);
+   
+  return (
+    <div id="pForm" className="Details ">
+      <h3 className="m-3 text-start text-info">{product.pageName}</h3>
+      <div className="Details-content container d-flex">
+        <div className="w-50 ">
+          <img
+            className="w-100 m-2 rounded-3"
+            src={process.env.PUBLIC_URL + `/images/${product.imageUrl}`}
+            alt="Freestocks"
+          />
+        </div>
 
-    // const [product, setProduct] = useState(null);
-
-    // useEffect(() => {
-    //   fetch(`http://localhost:4000/api/product/${urlslag}`)
-    //     .then((resp) => resp.json())
-    //     .then((prod) => setProduct(prod));
-    // });
-
-    let myProduct = products.find(p => p.pageName === urlSlug);
-
-return (
-<div className='Details '>
-<div className='Details-content container'>
-            <h1>{urlSlug}</h1>
-           
-</div>
-</div>
-);
+        <div className="m-md-3">
+          <div className="">
+            <p className=" fs-1 fw-bold">{product.title}</p>
+            <textarea
+              className="border-white fs-5"
+              name=""
+              id={product.id}
+              cols="50"
+              rows="4"
+              defaultValue={product.description}
+            ></textarea>
+          </div>
+          <Link to="/shoppingList">
+            <input
+              id="pSubmit"
+              className="btn btn-primary col-md-5 m-4"
+              type="submit"
+              value="Add To List"
+              onClick={() => this.props.OnAddProduct(product.pageName)}
+            />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 }
  
 export default Details;

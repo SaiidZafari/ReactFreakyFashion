@@ -2,31 +2,46 @@ import SpotsApp from "./SpotsApp";
 
 function SpotsSection({products}) {
 
-  const position = "25%";
-
-  const imageUrl2 = "Mountain.jpg";
-  const spotsTitle2 = "Beautiful mountains";
+  const spotCollection = {
+    spotsApp: [
+      {
+        id: 1,
+        imageUrl: "hand.jpg",
+        spotsTitle: "Beast and beauty",
+        titlePosition: "50%",
+        linkTo:"Hand",
+      },
+      {
+        id: 2,
+        imageUrl: "Mountain.jpg",
+        spotsTitle: "Beautiful mountains",
+        titlePosition: "25%",
+        linkTo: "Mountain",
+      },
+      {
+        id: 3,
+        imageUrl: "Heart.jpg",
+        spotsTitle: "Capture a moment",
+        titlePosition: "5%",
+        linkTo: "Heart",
+      },
+    ],
+  };
   
-  const imageUrl3 = "Heart.jpg";
-  const title3 = "Capture a moment";  
     
-  return (
-    <div className="SpotsSection">
+  return (  
       <div className="SpotsSection-content m-1 d-flex justify-content-between align-items-center">
-        <SpotsApp titlePosition={position} />
-        <SpotsApp imageUrl={imageUrl2} spotsTitle={spotsTitle2} />
-        <SpotsApp
-          imageUrl={imageUrl3}
-          spotsTitle={title3}
-          titlePosition="-2%"
-        />
-        <SpotsApp
-          imageUrl="Dog.jpg"
-          spotsTitle="Beast and beauty"
-          titlePosition="50%"
-        />
-      </div>
-    </div>
+       
+        {spotCollection.spotsApp.map((spot) => (
+          <SpotsApp key={spot.id}
+            imageUrl={spot.imageUrl}
+            spotsTitle={spot.spotsTitle}
+            titlePosition={spot.titlePosition}
+            linkTo={spot.linkTo}
+          />
+        ))}
+
+      </div>    
   );
 }
 
