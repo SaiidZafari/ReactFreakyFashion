@@ -4,14 +4,14 @@ import { useSelector } from "react-redux";
 
 function ProductSection({ sectionTitle = "Product Section" }) {
 
-  const products = useSelector((state) => state.allProducts.products);
+  const productsRedux = useSelector((state) => state.allProducts.products);
 
   return (
     <div className="ProductSection">
       <h1> {sectionTitle} </h1>
       <Card />
       <div className="container d-flex flex-wrap justify-content-between align-items-center ">
-        {products.map((product) => (
+        {productsRedux.map((product) => (
           <CartApp
             key={product.id}
             imageUrl={product.imageUrl}

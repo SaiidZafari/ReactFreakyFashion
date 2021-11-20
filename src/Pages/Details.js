@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
 
 
@@ -15,16 +15,16 @@ function Details() {
   return (
     <div id="pForm" className="Details ">
       <h3 className="m-3 text-start text-info">{product.pageName}</h3>
-      <div className="Details-content container d-flex">
-        <div className="w-50 ">
+      <div className="Details-content container d-flex flex-wrap">
+        <div className="col-md-3" style={{}}>
           <img
             className="w-100 m-2 rounded-3"
             src={process.env.PUBLIC_URL + `/images/${product.imageUrl}`}
-            alt="Freestocks"
+            alt="Coming soon"
           />
         </div>
 
-        <div className="m-md-3">
+        <div className="col-md-6">
           <div className="">
             <p className=" fs-1 fw-bold">{product.title}</p>
             <textarea

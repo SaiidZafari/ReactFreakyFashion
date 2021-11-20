@@ -7,6 +7,9 @@ function CartApp({
   imageUrl = "Freestocks.jpg",
   currency = "SEK",
 }) {
+
+
+  
   return (
     <div className="InfoCart p-1 col-md-3">
       <Link
