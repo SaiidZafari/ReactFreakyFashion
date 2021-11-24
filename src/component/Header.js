@@ -19,15 +19,20 @@ function Header() {
             </Link>
             <p className="text-info fs-5"></p>
           </div>
-          {/* <div className="">
-            <div>
-              <input
-                // onChange={(text) => searchFilterFunction(text)}
-                className="rounded-3 fs-5"
-                placeholder="search..."
-              />
-            </div>
-          </div> */}
+          <div className="">
+            <Link to="/shoppingList">
+              <div className="mt-2 position-relative">
+                <img
+                  src={process.env.PUBLIC_URL + "/images/Basket.png"}
+                  width="35px"
+                  alt="Basket"
+                />
+                <span className="badge bg-danger rounded-circle position-absolute start-0 ">
+                  2
+                </span>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

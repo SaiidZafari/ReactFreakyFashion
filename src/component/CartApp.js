@@ -6,12 +6,11 @@ function CartApp({
   urlSlug ,
   imageUrl = "Freestocks.jpg",
   currency = "SEK",
+  
 }) {
 
-
-  
   return (
-    <div className="InfoCart p-1 col-md-3">
+    <div className="InfoCart p-1 col-md-3" >
       <Link
         to={`/Products/${urlSlug}`}
         className="InfoCart-content cart  align-content-center text-decoration-none text-reset"
@@ -27,7 +26,7 @@ function CartApp({
             {productName}
           </p>
           <p className="fw-bold fs-5">
-            {productPrice} {currency}
+            {productPrice} <span className="fs-6 text-black-50">{currency}</span>
           </p>
         </div>
       </Link>

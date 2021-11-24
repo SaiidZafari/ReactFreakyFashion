@@ -7,13 +7,29 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css";
 import store from './redux/store';
+import Navigation from './component/Navigation';
+import Header from './component/Header';
+import { Card } from 'react-bootstrap';
+import Footer from './component/Footer';
+import CopyRight from './component/CopyRight';
 
+// TODO: titta på redux thunks
+//store.dispatch(loadInitialData());
 
 ReactDOM.render(
   <BrowserRouter>
-    <Provider store={store}>
-    <App />
-    </Provider>
+    <Navigation />
+    <div className="container">
+      <Header pageTitle="Home" />
+      <Card />
+      <Provider store={store}>
+        <App />
+      </Provider>
+      <Card />
+      <Footer />
+      <Card />
+      <CopyRight />
+    </div>
   </BrowserRouter>,
   document.getElementById("root")
 );

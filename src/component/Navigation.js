@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import {Link, NavLink } from "react-router-dom";
 import Search from "./../Pages/Search";
 import MenuLinkApp from './MenuLinkApp';
 import Home from './../Pages/Home';
+import { useRef } from "react";
 
-function Navigation() {
+function Navigation(props) {
 
   const menuLink = [
     { id:1, link: "Home", path: "/" },
@@ -11,6 +12,12 @@ function Navigation() {
     { id:3, link: "ShoppingList", path: "/shoppingList" },
     { id:4, link: "Search", path: "/search" },
   ];
+
+  const inputEl = useRef("");
+
+  const getSearchTerm = () => {
+    props.earchKeyword(inputEl.current.value);
+   };
 
   return (
     <nav
@@ -49,10 +56,14 @@ function Navigation() {
           </ul>
           <form>
             <input
+              ref={inputEl}
               class="form-control"
-              type="text"
+              type="search"
               placeholder="Search"
-              aria-label="Search"
+              aria-label="/Search"
+              name="q"
+              value={props.term}
+               onChange={getSearchTerm}
             />
           </form>
         </div>

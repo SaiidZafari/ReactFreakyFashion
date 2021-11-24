@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../redux/action/ProductAction";
 
 function Home({ productsRedux }) {
+  
   productsRedux = useSelector((state) => state.allProducts.products);
 
   // const [productsApi, setProductApi] = useState(products);
@@ -37,7 +38,7 @@ function Home({ productsRedux }) {
    // using useEffect to add data to the system
    useEffect(() => {
      productsApi();
-   }, []);
+   },[]);
 
 
 

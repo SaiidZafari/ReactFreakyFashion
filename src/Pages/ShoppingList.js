@@ -1,8 +1,29 @@
 // import Details from "./Details";
 import { Card } from "react-bootstrap";
-import CartApp from "./../component/CartApp";
+import { useState } from 'react';
+import { useEffect } from 'react';
+import Counter from "../component/Counter";
+import { useSelector } from 'react-redux';
 
-function ShoppingList({ OnAddProduct, handleAddProduct }) {
+function ShoppingList() {
+
+  const [count, setCount] = useState(1); 
+
+  const handleIncrement = () => {
+        setCount(count + 1);
+   }
+  
+  const handleDecrement = () => {
+    setCount(count - 1);
+  };
+
+ const formatCount =() =>{
+   
+    return count <= 0 ? 0 : count;
+  }
+
+  let shoppingCart = useSelector((state) => state.shoppinCart);
+
   const shoppinCart = {
     list: [
       {
@@ -16,14 +37,14 @@ function ShoppingList({ OnAddProduct, handleAddProduct }) {
         id: 2,
         imageUrl: "Mountain.jpg",
         name: "Mountains",
-        price: 499,
+        price: 690,
         count: 1,
       },
       {
         id: 3,
         imageUrl: "Heart.jpg",
         name: "Capture a moment",
-        price: 499,
+        price: 259,
         count: 1,
       },
     ],
@@ -46,7 +67,7 @@ function ShoppingList({ OnAddProduct, handleAddProduct }) {
             </tr>
           </thead>
           <tbody>
-            {shoppinCart.list.map((product) => (
+            {shoppingCart.map((product) => (
               <tr className="fs-5 ">
                 <td className="col-2">
                   <img
@@ -56,13 +77,32 @@ function ShoppingList({ OnAddProduct, handleAddProduct }) {
                   />
                 </td>
                 <td>
-                  {" "}
                   <label>{product.name}</label>
                 </td>
                 <td>
                   <label>{product.price}</label>
                 </td>
-                <td>1</td>
+                <td>
+                  {/* <Counter  key={product.id} /> */}
+                  <button
+                    id={product.id}
+                    // onClick={() => this.handleIncrement(product.id)}
+                    onClick={handleIncrement}
+                    className="btn btn-outline-primary"
+                  >
+                    +
+                  </button>
+                  <span id={product.id} className="m-2">
+                    {formatCount()}
+                  </span>
+                  <button
+                    id={product.id}
+                    onClick={handleDecrement}
+                    className="btn btn-outline-primary"
+                  >
+                    -
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -90,6 +130,9 @@ function ShoppingList({ OnAddProduct, handleAddProduct }) {
       </div>
     </>
   );
+
+ 
+
 }
 
 export default ShoppingList;

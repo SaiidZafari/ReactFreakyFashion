@@ -2,7 +2,7 @@ import CartApp from "./CartApp";
 import { Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
-function ProductSection({ sectionTitle = "Product Section" }) {
+function ProductSection({ sectionTitle = "Product Section", products }) {
 
   const productsRedux = useSelector((state) => state.allProducts.products);
 
