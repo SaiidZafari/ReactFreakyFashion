@@ -1,19 +1,61 @@
  
 import { Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { axios } from 'axios';
 
 function Search(props) {
-  const productsRedux = useSelector((state) => state.allProducts.products);
+
+  //const productsRedux = useSelector((state) => state.allProducts.products);
+
+  let [urlSearchParams] = useSearchParams();
+  
+  const q = urlSearchParams.get("q");
+
+  const [searchResult, setSearchResult] = useState([]);
+
+  
+
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:4000/api/search?q=${q}`)
+  //     .then(resp => resp.json())
+  //     .then(result => setSearchResult(result));
+  // }, [q]);
+
+  // useEffect(() => {
+  //   const searchRes= async () => {
+  //     const response = await axios
+  //       .get(`http://localhost:4000/api/search?q=${q}`)
+  //       .catch((err) => {
+  //         console.log("err", err);
+  //       });
+      
+  //     setSearchResult(searchRes);
+  //     // dispatch(setProducts(response.data));
+  //   };
+  // }, [q]);
+
+  useEffect(() => {
+    async function getSearchResult() {
+      const result = await axios(`http://localhost:4000/api/search?q=${q}`);
+      
+      setSearchResult(result.data);
+    }
+      getSearchResult();
+  });
+
+  
 
   return (
     <div className="Search">
+      <div>3 example of {q} founded.</div>
       <h1 className="text-info"> Search </h1>
       <Card />
       <div className="d-flex col-md-12">
         <div className="mt-5 ">
-          {productsRedux.map((product) => (
+          {searchResult.map((product) => (
             <div className="d-flex  m-2" key={product.id}>
               <div className="col-1 ">
                 <img
@@ -33,24 +75,14 @@ function Search(props) {
             </div>
           ))}
         </div>
-        <div className="col-md-2 mt-5">
-          <ul className=" bg-primary fs-5 text-white rounded-3">
-            <li className="border-bottom">
-              <th>Search Result</th>
-            </li>
-            <li>
-              <th>Search Term</th>
-            </li>
-            <li className="border-bottom">
-              <th>xxxx</th>
-            </li>
-            <li>
-              <th>Number of Item</th>
-            </li>
-            <li>
-              <th>XXXX</th>
-            </li>
-          </ul>
+        <div className="col-md-2 mt-5 ">
+          <div className=" bg-primary fs-5 text-white rounded-3 ">
+            <div className="border-bottom ">Search Result</div>
+            <div>Search Term</div>
+            <div className="border-bottom">{q}</div>
+            <div>Number of Item</div>
+            <div>xxxxxx</div>
+          </div>
         </div>
       </div>
     </div>

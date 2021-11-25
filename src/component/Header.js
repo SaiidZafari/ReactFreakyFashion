@@ -1,8 +1,11 @@
 // import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 
 function Header() {
+
+const shoppingCart = useSelector((state) => state.shoppingCart);
  
   return (
     <div className="Header">
@@ -28,7 +31,7 @@ function Header() {
                   alt="Basket"
                 />
                 <span className="badge bg-danger rounded-circle position-absolute start-0 ">
-                  2
+                  {shoppingCart.length}
                 </span>
               </div>
             </Link>

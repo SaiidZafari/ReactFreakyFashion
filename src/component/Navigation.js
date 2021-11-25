@@ -1,8 +1,7 @@
-import {Link, NavLink } from "react-router-dom";
-import Search from "./../Pages/Search";
+import { Link, useNavigate } from "react-router-dom";
 import MenuLinkApp from './MenuLinkApp';
-import Home from './../Pages/Home';
-import { useRef } from "react";
+import React, { useState } from "react";
+import SearchApp from './SearchApp';
 
 function Navigation(props) {
 
@@ -13,12 +12,23 @@ function Navigation(props) {
     { id:4, link: "Search", path: "/search" },
   ];
 
-  const inputEl = useRef("");
+  //const inputEl = useRef("");
 
-  const getSearchTerm = () => {
-    props.earchKeyword(inputEl.current.value);
-   };
+  const [searchTerm, setSearchTerm] = useState("");
 
+  const navigate = useNavigate();
+
+  const submitHandler = (e) => {
+   // e.target.reset();
+    e.preventDefault();
+    navigate(`/search?q=${searchTerm}`);
+
+    setSearchTerm("");
+  }
+  
+  
+  
+ console.log(props);
   return (
     <nav
       class="navbar navbar-expand-md navbar-dark bg-dark "
@@ -54,18 +64,18 @@ function Navigation(props) {
               />
             ))}
           </ul>
-          <form>
+          <SearchApp />
+          {/* <form onSubmit={submitHandler}>
             <input
               ref={inputEl}
               class="form-control"
               type="search"
               placeholder="Search"
               aria-label="/Search"
-              name="q"
-              value={props.term}
-               onChange={getSearchTerm}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-          </form>
+          </form> */}
         </div>
       </div>
     </nav>

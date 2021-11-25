@@ -1,57 +1,24 @@
-// import Details from "./Details";
-import { Card } from "react-bootstrap";
 import { useState } from 'react';
-import { useEffect } from 'react';
 import Counter from "../component/Counter";
-import { useSelector } from 'react-redux';
+import { useSelector} from 'react-redux';
+import { removeFromCart } from './../redux/action/ProductAction';
+import { shoppingCartReducer } from './../redux/reducers/productReducer';
 
 function ShoppingList() {
+ 
 
-  const [count, setCount] = useState(1); 
+  let shoppingCart = useSelector((state) => state.shoppingCart);
 
-  const handleIncrement = () => {
-        setCount(count + 1);
-   }
-  
-  const handleDecrement = () => {
-    setCount(count - 1);
-  };
+  const productsPrice = shoppingCart.reduce((a, c) => parseInt(a) + parseInt(c.price) , 0);
 
- const formatCount =() =>{
    
-    return count <= 0 ? 0 : count;
+ 
+  const [totalPrice, setTotalPrice] = useState(productsPrice);  
+  
+
+  const removeHandle = (product) => {
+   shoppingCartReducer.dispatch(removeFromCart(product));
   }
-
-  let shoppingCart = useSelector((state) => state.shoppinCart);
-
-  const shoppinCart = {
-    list: [
-      {
-        id: 1,
-        imageUrl: "hand.jpg",
-        name: "Hand",
-        price: 499,
-        count: 1,
-      },
-      {
-        id: 2,
-        imageUrl: "Mountain.jpg",
-        name: "Mountains",
-        price: 690,
-        count: 1,
-      },
-      {
-        id: 3,
-        imageUrl: "Heart.jpg",
-        name: "Capture a moment",
-        price: 259,
-        count: 1,
-      },
-    ],
-  };
-  // handleAddProduct = (shoppingCartId) => {
-  //   console.log("Event Handler Called", shoppingCartId);
-  // };
 
   return (
     <>
@@ -64,47 +31,42 @@ function ShoppingList() {
               <th>Name</th>
               <th>Price</th>
               <th>Numder</th>
+              <th></th>
             </tr>
           </thead>
+
           <tbody>
-            {shoppingCart.map((product) => (
-              <tr className="fs-5 ">
-                <td className="col-2">
-                  <img
-                    className="w-100  rounded-circle"
-                    src={process.env.PUBLIC_URL + `/images/${product.imageUrl}`}
-                    alt="Coming Soon"
-                  />
-                </td>
-                <td>
-                  <label>{product.name}</label>
-                </td>
-                <td>
-                  <label>{product.price}</label>
-                </td>
-                <td>
-                  {/* <Counter  key={product.id} /> */}
-                  <button
-                    id={product.id}
-                    // onClick={() => this.handleIncrement(product.id)}
-                    onClick={handleIncrement}
-                    className="btn btn-outline-primary"
-                  >
-                    +
-                  </button>
-                  <span id={product.id} className="m-2">
-                    {formatCount()}
-                  </span>
-                  <button
-                    id={product.id}
-                    onClick={handleDecrement}
-                    className="btn btn-outline-primary"
-                  >
-                    -
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {shoppingCart &&
+              shoppingCart.map((product, index) => (
+                <tr className="fs-5 " key={product.id}>
+                  <td className="col-1">
+                    <img
+                      className="w-100  rounded-circle"
+                      src={
+                        process.env.PUBLIC_URL + `/images/${product.imageUrl}`
+                      }
+                      alt="Coming Soon"
+                    />
+                  </td>
+                  <td>
+                    <label>{product.title}</label>
+                  </td>
+                  <td>
+                    <label>{product.price}</label>
+                  </td>
+                  <td>
+                    <Counter key={index} />
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => removeHandle(product)}
+                      className="btn btn-danger col-ms-1"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
 
@@ -117,13 +79,13 @@ function ShoppingList() {
               <th>Number of Items</th>
             </tr>
             <tr className="border-bottom">
-              <th>xxxx</th>
+              <th>{shoppingCart.length}</th>
             </tr>
             <tr>
               <th>Total Price</th>
             </tr>
             <tr>
-              <th>XXXX</th>
+              <th>{totalPrice}</th>
             </tr>
           </thead>
         </table>

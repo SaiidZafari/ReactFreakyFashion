@@ -18,18 +18,20 @@ import CopyRight from './component/CopyRight';
 
 ReactDOM.render(
   <BrowserRouter>
-    <Navigation />
-    <div className="container">
-      <Header pageTitle="Home" />
-      <Card />
-      <Provider store={store}>
+    <Provider store={store}>
+      <Navigation />
+      <div className="container">
+        <Header pageTitle="Home" />
+        <Card />
+
         <App />
-      </Provider>
-      <Card />
-      <Footer />
-      <Card />
-      <CopyRight />
-    </div>
+
+        <Card />
+        <Footer />
+        <Card />
+        <CopyRight />
+      </div>
+    </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );

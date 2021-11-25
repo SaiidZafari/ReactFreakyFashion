@@ -7,6 +7,7 @@ import Search from "./Pages/Search";
 import ShoppingList from "./Pages/ShoppingList";
 import { useState } from 'react';
 import { products } from './component/dataBase';
+import Counter from './component/Counter';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,21 +27,14 @@ function App() {
   
   return (
     <div className="App">
-      
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="products" element={<Products />} />
-          <Route path="products/:urlSlug" element={<Details />} />
-          <Route path="shoppingList" element={<ShoppingList />} />
-          <Route
-            path="search"           
-            element={<Search
-              products={searchTerm.length < 1 ? products : searchResult}
-          searchKeyword={searchHandler}
-          term={searchTerm}
-            />}
-          />
-        </Routes>       
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:urlSlug" element={<Details />} />
+        <Route path="/shoppingList" element={<ShoppingList />} />
+        <Route path="counter" element={<Counter />} />
+        <Route path="search"  element={<Search />} />        
+      </Routes>
     </div>
   );
 }
