@@ -2,45 +2,46 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectedProduct,
+  fetchProduct,
   removeSelectedProduct,
   addToCart,
 } from "../redux/action/ProductAction";
-//import { addToCart } from "../redux/action/ProductAction";
 
-import axios from "axios";
-
-// export class Details extends Component {
 
 function Details() {
+
+
   const productRedux = useSelector((state) => state.product);
 
-  //let shopping = useSelector((state) => state.shoppingCart);
-
-  console.log(productRedux);
   const { urlSlug } = useParams();
   const dispatch = useDispatch();
 
-  const fetchProductDetail = async () => {
-    const response = await axios
-      .get(`http://localhost:4000/api/products/${urlSlug}`)
-      .catch((err) => {
-        console.log("err", err);
-      });
-
-    dispatch(selectedProduct(response.data));
-
-    console.log(response.data);
-  };
-
   useEffect(() => {
-    if (urlSlug && urlSlug !== "") {
-      fetchProductDetail();
-    }
-    return () => {
-      dispatch(removeSelectedProduct());
-    };
-  }, [urlSlug]); // run every time urlSlug change
+    dispatch(fetchProduct(urlSlug));
+
+    
+  }); // run every time urlSlug change
+
+  // const fetchProductDetail = async () => {
+  //   const response = await axios
+  //     .get(`http://localhost:4000/api/products/${urlSlug}`)
+  //     .catch((err) => {
+  //       console.log("err", err);
+  //     });
+
+  //   dispatch(selectedProduct(response.data));
+
+  //   console.log(response.data);
+  // };
+
+  // useEffect(() => {
+  //   if (urlSlug && urlSlug !== "") {
+  //     fetchProductDetail();
+  //   }
+  //   return () => {
+  //     dispatch(removeSelectedProduct());
+  //   };
+  // }, [urlSlug]); // run every time urlSlug change
 
   //-----------------------------------------------
 
@@ -88,7 +89,6 @@ function Details() {
                 type="submit"
               />
             </Link>
-
           </div>
         </div>
       )}

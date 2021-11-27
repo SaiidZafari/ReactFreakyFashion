@@ -1,61 +1,38 @@
  
 import { Card } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { axios } from 'axios';
+import { useEffect, useState } from "react";
+import {searchProducts} from "../redux/action/ProductAction";
+import { useDispatch, useSelector } from "react-redux";
 
 function Search(props) {
-
-  //const productsRedux = useSelector((state) => state.allProducts.products);
-
-  let [urlSearchParams] = useSearchParams();
+  const productsRedux = useSelector((state) => state.allProducts.products);
   
-  const q = urlSearchParams.get("q");
-
-  const [searchResult, setSearchResult] = useState([]);
-
   
+   let [urlSearchParams] = useSearchParams();
 
+   const q = urlSearchParams.get("q");
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:4000/api/search?q=${q}`)
-  //     .then(resp => resp.json())
-  //     .then(result => setSearchResult(result));
-  // }, [q]);
-
-  // useEffect(() => {
-  //   const searchRes= async () => {
-  //     const response = await axios
-  //       .get(`http://localhost:4000/api/search?q=${q}`)
-  //       .catch((err) => {
-  //         console.log("err", err);
-  //       });
-      
-  //     setSearchResult(searchRes);
-  //     // dispatch(setProducts(response.data));
-  //   };
-  // }, [q]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    async function getSearchResult() {
-      const result = await axios(`http://localhost:4000/api/search?q=${q}`);
-      
-      setSearchResult(result.data);
+    if (q !== "") {
+      dispatch(searchProducts(q));
     }
-      getSearchResult();
   });
 
-  
+
+  const searchRes = useSelector((state) => state.searchedProducts.products.result);
+
+  const count = useSelector((state) => state.searchedProducts.products.count); 
 
   return (
     <div className="Search">
-      <div>3 example of {q} founded.</div>
       <h1 className="text-info"> Search </h1>
       <Card />
       <div className="d-flex col-md-12">
         <div className="mt-5 ">
-          {searchResult.map((product) => (
+          {searchRes.map((product) => (
             <div className="d-flex  m-2" key={product.id}>
               <div className="col-1 ">
                 <img
@@ -79,9 +56,9 @@ function Search(props) {
           <div className=" bg-primary fs-5 text-white rounded-3 ">
             <div className="border-bottom ">Search Result</div>
             <div>Search Term</div>
-            <div className="border-bottom">{q}</div>
+            <div className="border-bottom">{q !== "" ? q : "Empty"}</div>
             <div>Number of Item</div>
-            <div>xxxxxx</div>
+            <div>{count}</div>
           </div>
         </div>
       </div>

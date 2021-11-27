@@ -24,13 +24,14 @@ function ShoppingList() {
     <>
       <h1> ShoppingList </h1>
       <div className="ShoppingList d-flex justify-content-between">
-        <table className="col-md-9 mt-5">
+        <table className="col-md-10 mt-5">
           <thead>
-            <tr className="fs-3 border-bottom">
+            <tr className="fs-5 border-bottom">
               <th>Image</th>
               <th>Name</th>
               <th>Price</th>
               <th>Numder</th>
+              <th>Total</th>
               <th></th>
             </tr>
           </thead>
@@ -38,7 +39,7 @@ function ShoppingList() {
           <tbody>
             {shoppingCart &&
               shoppingCart.map((product, index) => (
-                <tr className="fs-5 " key={product.id}>
+                <tr className="fs-5 " key={index}>
                   <td className="col-1">
                     <img
                       className="w-100  rounded-circle"
@@ -58,6 +59,9 @@ function ShoppingList() {
                     <Counter key={index} />
                   </td>
                   <td>
+                    <label>{Counter}</label>
+                  </td>
+                  <td>
                     <button
                       onClick={() => removeHandle(product)}
                       className="btn btn-danger col-ms-1"
@@ -70,7 +74,7 @@ function ShoppingList() {
           </tbody>
         </table>
 
-        <table className="col-md-2 bg-primary fs-5 text-white rounded-3">
+        <table className="col-md-2 bg-primary fs-6 text-white rounded-3">
           <thead>
             <tr className="border-bottom">
               <th>Invoice</th>

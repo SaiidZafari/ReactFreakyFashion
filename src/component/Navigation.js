@@ -14,17 +14,17 @@ function Navigation(props) {
 
   //const inputEl = useRef("");
 
-  const [searchTerm, setSearchTerm] = useState("");
+  
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
-  const submitHandler = (e) => {
-   // e.target.reset();
-    e.preventDefault();
-    navigate(`/search?q=${searchTerm}`);
+  // const submitHandler = (e) => {
+  //   // e.target.reset();
+  //   e.preventDefault();
+  //   navigate(`/search?q=${searchTerm}`);
 
-    setSearchTerm("");
-  }
+  //   setSearchTerm("");
+  // }
   
   
   

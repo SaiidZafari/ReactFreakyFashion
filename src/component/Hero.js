@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Hero({
   titleHero,
@@ -6,7 +7,13 @@ function Hero({
   imgUrlHero = "",
   altHero = "A picture will be here.",
   buttonText = "Submit",
-}) {
+})
+{
+
+  const herosRedux = useSelector(
+    (state) => state.allProducts.products.Heros
+  );
+
   return (
     <div className="Hero d-flex flex-wrap">
       <div className="Hero-content col-lg-5">

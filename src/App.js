@@ -5,9 +5,11 @@ import Products from "./Pages/Products";
 import Details from "./Pages/Details";
 import Search from "./Pages/Search";
 import ShoppingList from "./Pages/ShoppingList";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { products } from './component/dataBase';
 import Counter from './component/Counter';
+import { useDispatch } from 'react-redux';
+import { fetchProducts } from './redux/action/ProductAction';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -23,17 +25,24 @@ function App() {
     } else {
       setSearchResult(products);
     }
-   };
+  };
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  });
   
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route path="/" exact element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:urlSlug" element={<Details />} />
         <Route path="/shoppingList" element={<ShoppingList />} />
         <Route path="counter" element={<Counter />} />
-        <Route path="search"  element={<Search />} />        
+        <Route path="search" element={<Search />} />
+        <Route/> 404 Not Fount! <Route />
       </Routes>
     </div>
   );

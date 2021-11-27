@@ -1,6 +1,6 @@
-// import { useState } from 'react';
 
-// function SearchProducts(props) {
+
+ function SearchProducts(props) {
 
 //   const { filterQuery, setFilterQuery } = useState();
 //   const filterArray = useState((state) => state.resetFilter);

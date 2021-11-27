@@ -7,24 +7,33 @@ const initialState = {
 export const productReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ActionTypes.SET_PRODUCTS:
-      // You will keep what you have in state (...state) and add products payload on it
       return { ...state, products: payload };
-
+    case ActionTypes.FETCH_PRODUCTS:
+      return { ...state, products: payload };
     default:
       return state;
   }
 };
 
-export const selectedProductReduser = (state = {}, { type, payload }) => {
+export const selectedProductReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.SELECTED_PRODUCT:
       // You will keep what you have in state (...state) and add products payload on it
       return { ...state, ...payload };
-   
+
     case ActionTypes.REMOVE_SELECTED_PRODUCT:
       // You will keep what you have in state (...state) and add products payload on it
       return {};
+    default:
+      return state;
+  }
+};
 
+export const searchedProductsReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.SEARCH_PRODUCTS:
+      // You will keep what you have in state (...state) and add products payload on it
+      return { ...state, products: payload };
     default:
       return state;
   }
