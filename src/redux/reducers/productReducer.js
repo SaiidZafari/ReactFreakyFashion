@@ -53,13 +53,14 @@ export const shoppingCartReducer = (state = [], action) => {
       return [...state, action.payload];
 
     case ActionTypes.REMOVE_FROM_CART:
-      return state.filter((item) => item.id !== action.payload.id);
+      // state.filter((item) => item.id !== action.payload.id);
+      state.pop()
+      return [...state]
 
     default:
       return state;
   }
 };
-
 
 
 

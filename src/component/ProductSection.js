@@ -1,19 +1,12 @@
 import CartApp from "./CartApp";
 import { Card } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { fetchProducts } from "./../redux/action/ProductAction";
+import { useSelector } from "react-redux";
 
 function ProductSection({ sectionTitle = "Product Section",products}) {
   const productsRedux = useSelector(
     (state) => state.allProducts.products
   );
 
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  // });
 
   return (
     <div className="ProductSection">

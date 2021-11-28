@@ -1,7 +1,8 @@
 import React, {useState } from 'react';
+import { useEffect } from 'react';
 
 
-function Counter({key}) {
+function Counter({addId}) {
 
   
   const [count, setCount] = useState(1);
@@ -14,25 +15,30 @@ function Counter({key}) {
     setCount(count - 1);
   };
 
-  const formatCount = () => {
-    return count <= 0 ? 0 : count;
-  };
+ const formatCount = () => {
+   return count <= 0 ? 0 : count;
+ };
+ 
+
+  useEffect(() => {
+    localStorage.setItem("counter", JSON.stringify(count));
+  }, [count]);
  
 return (
   <div>
     <button
-      id={100 + key}
+      id={100 + addId}
       // onClick={() => this.handleIncrement(product.id)}
       onClick={handleIncrement}
       className="btn btn-outline-primary"
     >
       +
     </button>
-    <span id={200 + key} className="m-2">
+    <span id={200 + addId} className="m-2">
       {formatCount()}
     </span>
     <button
-      id={300 + key}
+      id={300 + addId}
       onClick={handleDecrement}
       className="btn btn-outline-primary "
     >

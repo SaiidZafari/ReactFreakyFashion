@@ -1,6 +1,5 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MenuLinkApp from './MenuLinkApp';
-import React, { useState } from "react";
 import SearchApp from './SearchApp';
 
 function Navigation(props) {
@@ -11,22 +10,7 @@ function Navigation(props) {
     { id:3, link: "ShoppingList", path: "/shoppingList" },
     { id:4, link: "Search", path: "/search" },
   ];
-
-  //const inputEl = useRef("");
-
-  
-
-  //const navigate = useNavigate();
-
-  // const submitHandler = (e) => {
-  //   // e.target.reset();
-  //   e.preventDefault();
-  //   navigate(`/search?q=${searchTerm}`);
-
-  //   setSearchTerm("");
-  // }
-  
-  
+ 
   
  console.log(props);
   return (
@@ -65,17 +49,7 @@ function Navigation(props) {
             ))}
           </ul>
           <SearchApp />
-          {/* <form onSubmit={submitHandler}>
-            <input
-              ref={inputEl}
-              class="form-control"
-              type="search"
-              placeholder="Search"
-              aria-label="/Search"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </form> */}
+         
         </div>
       </div>
     </nav>

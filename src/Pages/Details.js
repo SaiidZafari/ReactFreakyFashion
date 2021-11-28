@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProduct,
-  removeSelectedProduct,
   addToCart,
 } from "../redux/action/ProductAction";
 
@@ -17,31 +16,8 @@ function Details() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProduct(urlSlug));
-
-    
-  }); // run every time urlSlug change
-
-  // const fetchProductDetail = async () => {
-  //   const response = await axios
-  //     .get(`http://localhost:4000/api/products/${urlSlug}`)
-  //     .catch((err) => {
-  //       console.log("err", err);
-  //     });
-
-  //   dispatch(selectedProduct(response.data));
-
-  //   console.log(response.data);
-  // };
-
-  // useEffect(() => {
-  //   if (urlSlug && urlSlug !== "") {
-  //     fetchProductDetail();
-  //   }
-  //   return () => {
-  //     dispatch(removeSelectedProduct());
-  //   };
-  // }, [urlSlug]); // run every time urlSlug change
+    if (urlSlug.length > 0) dispatch(fetchProduct(urlSlug));
+  }, [urlSlug]); // run every time urlSlug change
 
   //-----------------------------------------------
 

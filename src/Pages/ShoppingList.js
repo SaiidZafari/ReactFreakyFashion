@@ -1,23 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 import Counter from "../component/Counter";
-import { useSelector} from 'react-redux';
-import { removeFromCart } from './../redux/action/ProductAction';
-import { shoppingCartReducer } from './../redux/reducers/productReducer';
+import CustomerInfo from "../component/CustomerInfo";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  removeFromCart,
+  removeSelectedProduct,
+} from "./../redux/action/ProductAction";
 
-function ShoppingList() {
- 
+function ShoppingList(props) {
+  let shoppingsCart = useSelector((state) => state.shoppingCart);
 
-  let shoppingCart = useSelector((state) => state.shoppingCart);
+  const [count, setCount] = useState(0);
 
-  const productsPrice = shoppingCart.reduce((a, c) => parseInt(a) + parseInt(c.price) , 0);
+  useEffect(() => {
+    const counter = JSON.parse(localStorage.getItem("counter"));
+    if (counter) {
+      setCount(counter);
+    }
+  }, []);
 
-   
- 
-  const [totalPrice, setTotalPrice] = useState(productsPrice);  
-  
+  console.log("SZ: ", count);
+
+  const productsPrice = shoppingsCart.reduce(
+    (a, c) => parseInt(a) + parseInt(c.price),
+    0
+  );
+
+  const [totalPrice] = useState(productsPrice);
+
+  const dispatch = useDispatch();
 
   const removeHandle = (product) => {
-   shoppingCartReducer.dispatch(removeFromCart(product));
+    dispatch(removeFromCart());
+  };
+
+  if (shoppingsCart.length < 1 || !shoppingsCart) {
+    return <div className="fs-2 fw-bold text-warning">Cart Is Empty</div>;
   }
 
   return (
@@ -37,8 +55,8 @@ function ShoppingList() {
           </thead>
 
           <tbody>
-            {shoppingCart &&
-              shoppingCart.map((product, index) => (
+            {shoppingsCart &&
+              shoppingsCart.map((product, index) => (
                 <tr className="fs-5 " key={index}>
                   <td className="col-1">
                     <img
@@ -56,14 +74,14 @@ function ShoppingList() {
                     <label>{product.price}</label>
                   </td>
                   <td>
-                    <Counter key={index} />
+                    <Counter addId={index} />
                   </td>
                   <td>
                     <label>{Counter}</label>
                   </td>
                   <td>
                     <button
-                      onClick={() => removeHandle(product)}
+                      onClick={() => removeHandle()}
                       className="btn btn-danger col-ms-1"
                     >
                       Delete
@@ -83,7 +101,7 @@ function ShoppingList() {
               <th>Number of Items</th>
             </tr>
             <tr className="border-bottom">
-              <th>{shoppingCart.length}</th>
+              <th>{shoppingsCart.length}</th>
             </tr>
             <tr>
               <th>Total Price</th>
@@ -94,11 +112,9 @@ function ShoppingList() {
           </thead>
         </table>
       </div>
+      <CustomerInfo />
     </>
   );
-
- 
-
 }
 
 export default ShoppingList;

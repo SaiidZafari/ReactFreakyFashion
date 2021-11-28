@@ -1,6 +1,7 @@
 // import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import SearchApp from "./SearchApp";
 
 
 function Header() {
@@ -22,7 +23,10 @@ const shoppingCart = useSelector((state) => state.shoppingCart);
             </Link>
             <p className="text-info fs-5"></p>
           </div>
-          <div className="">
+          <div className="text-end">
+            <div className="mt-1">
+              <SearchApp />
+            </div>
             <Link to="/shoppingList">
               <div className="mt-2 position-relative">
                 <img
@@ -30,7 +34,7 @@ const shoppingCart = useSelector((state) => state.shoppingCart);
                   width="35px"
                   alt="Basket"
                 />
-                <span className="badge bg-danger rounded-circle position-absolute start-0 ">
+                <span className="badge bg-danger rounded-circle position-absolute end-0 me-3 ">
                   {shoppingCart.length}
                 </span>
               </div>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 function Hero({
   titleHero,
@@ -10,9 +10,9 @@ function Hero({
 })
 {
 
-  const herosRedux = useSelector(
-    (state) => state.allProducts.products.Heros
-  );
+  // const herosRedux = useSelector(
+  //   (state) => state.allProducts.products.Heros
+  // );
 
   return (
     <div className="Hero d-flex flex-wrap">

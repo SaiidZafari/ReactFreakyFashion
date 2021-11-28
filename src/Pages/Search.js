@@ -1,25 +1,25 @@
  
 import { Card } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import {searchProducts} from "../redux/action/ProductAction";
-import { useDispatch, useSelector } from "react-redux";
+// import { useEffect } from "react";
+// import {searchProducts} from "../redux/action/ProductAction";
+import { useSelector } from "react-redux";
 
 function Search(props) {
-  const productsRedux = useSelector((state) => state.allProducts.products);
+  //const productsRedux = useSelector((state) => state.allProducts.products);
   
   
    let [urlSearchParams] = useSearchParams();
 
    const q = urlSearchParams.get("q");
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (q !== "") {
-      dispatch(searchProducts(q));
-    }
-  });
+  // useEffect(() => {
+  //   if (q !== "") {
+  //     dispatch(searchProducts(q));
+  //   }
+  // });
 
 
   const searchRes = useSelector((state) => state.searchedProducts.products.result);

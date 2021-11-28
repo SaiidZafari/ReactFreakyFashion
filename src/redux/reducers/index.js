@@ -12,6 +12,7 @@ const reducers = combineReducers({
   product: selectedProductReducer,
   shoppingCart: shoppingCartReducer,
   searchedProducts: searchedProductsReducer,
+  
 });
 
 
