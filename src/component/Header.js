@@ -25,7 +25,7 @@ const shoppingCart = useSelector((state) => state.shoppingCart);
           </div>
           <div className="text-end">
             <div className="mt-1">
-              <SearchApp />
+              {/* <SearchApp /> */}
             </div>
             <Link to="/shoppingList">
               <div className="mt-2 position-relative">

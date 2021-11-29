@@ -11,37 +11,7 @@ function Products() {
 
   // // useSelector to get data from redux data storage  
   const productsRedux = useSelector((state) => state.allProducts.products);
-
-    //Dispatch the data
-    // const dispatch = useDispatch();
-
-    // using Axios to get data from API
-    // const productsApi = async () => {
-    //   const response = await axios
-    //     .get("http://localhost:4000/api/products")
-    //     .catch((err) => {
-    //       console.log("err", err);
-    //     });
-
-    //   dispatch(setProducts(response.data));
-    // };
-
-    // using useEffect to add data to the system
-    // useEffect(() => {
-    //   productsApi();
-    // }, []);
-  
-  // const [productsApi, setProductsApi] = useState([]);
-
-  // useEffect(() => {
-  //   async function getProductsApi() {
-  //     const result = await axios("http://localhost:4000/api/products");
-  //   setProductsApi(result.data);
-  //   }
-  //   getProductsApi();    
-  //   })
-
-
+   
   return (
     <div className="Products">
       <h1> Products </h1>

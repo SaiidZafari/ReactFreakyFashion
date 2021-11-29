@@ -4,15 +4,18 @@ import {
   selectedProductReducer,
   shoppingCartReducer,
   searchedProductsReducer,
+  herosReducer,
+  spotsReducer,
 } from "./productReducer";
 
 
 const reducers = combineReducers({
   allProducts: productReducer,
+  heros: herosReducer,
+  spots : spotsReducer,
   product: selectedProductReducer,
   shoppingCart: shoppingCartReducer,
   searchedProducts: searchedProductsReducer,
-  
 });
 
 

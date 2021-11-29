@@ -1,18 +1,11 @@
 import { Link } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-function Hero({
-  titleHero,
-  descriptionHero = "Coming Soon",
-  imgUrlHero = "",
-  altHero = "A picture will be here.",
-  buttonText = "Submit",
-})
-{
+function Hero({titleHero, descriptionHero, buttonTextHero, imageUrlHero, altHero}) {
+ 
 
-  // const herosRedux = useSelector(
-  //   (state) => state.allProducts.products.Heros
-  // );
+ // const { title, description, imageUrl, alt, buttonText } = heros;
 
   return (
     <div className="Hero d-flex flex-wrap">
@@ -23,7 +16,7 @@ function Hero({
           <input
             type="submit"
             className="link-button col-sm-auto btn btn-primary col-md-6 mt-4"
-            value={buttonText}
+            value={buttonTextHero}
           />
         </Link>
       </div>
@@ -31,7 +24,7 @@ function Hero({
         <img
           className="rounded-3 "
           style={{ width: "100%" }}
-          src={`${process.env.PUBLIC_URL}/images/${imgUrlHero}`}
+          src={`${process.env.PUBLIC_URL}/images/${imageUrlHero}`}
           alt={altHero}
         />
       </div>

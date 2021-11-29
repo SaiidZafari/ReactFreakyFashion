@@ -1,29 +1,63 @@
+import React,{useState, useEffect} from "react";
 import { Card } from "react-bootstrap";
+
 function CustomerInfo() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // const application = { ...formFields };
+   // const application = { ...formFields };
 
-    // fetch("http://localhost:4000/api/shopping", {
-    //   method: "post",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(application)
-    // }).then(resp => {
+  //  const [formFields, setFormFields] = useState ({
+  //    firstName: "",
+  //    lastName: "",
+  //    email: "",
+  //    password: "",
+  //  });
+
+  //  const [programs, setPrograms] = useState([]);
+
+  //  useEffect(() => {
+  //    async function fetchData() {
+  //      const response = await fetch("http://localhost:5000/api/programs");
+
+  //      const programs = await response.json();
+
+  //      setPrograms(programs);
+  //    }
+
+  //    fetchData();
+
+  //    // Alternativt, utan async/await
+  //    // fetch("http://localhost:5000/api/programs")
+  //    //   .then(resp => resp.json())
+  //    //   .then(programs => setPrograms(programs));
+  //  }, []);
+
+  //  const handleSubmit = (event) => {
+  //    event.preventDefault();
+
+  //    const application = { ...formFields };
+
+  //    fetch("http://localhost:5000/api/applications", {
+  //      method: "post",
+  //      headers: {
+  //        "Content-Type": "application/json",
+  //      },
+  //      body: JSON.stringify(application),
+  //    }).then((resp) => {
+  //      console.log(application);
+
+  //      alert("Tack för ansökan, vi kommer kontakta dig");
+
+  //      setFormFields({
         
-    //   console.log(application);
-
-    //   alert("Thanks for shooping.");
-
-    //   setFormFields({
-    //     firstName: "",
-    //     lastName: "",
-    //     email: "",
-    //     Password: ""
-    //   });
-    // });
+  //        firstName: "",
+  //        lastName: "",
+  //        email: "",
+  //        password: "",
+  //      });
+  //    });
+  //  };
   }
 
   return (
@@ -56,9 +90,9 @@ function CustomerInfo() {
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input id="password" type="text" className="form-control" />{" "}
+            <input id="password" type="password" className="form-control" />{" "}
           </div>
-          <button type="submit" className="btn btn-primary col-md-6 mt-3 mb-3">
+          <button type="submit" className="btn btn-primary offset-md-3 col-md-6 mt-3 mb-3">
             Buy
           </button>
         </form>

@@ -4,7 +4,6 @@ import CustomerInfo from "../component/CustomerInfo";
 import { useSelector, useDispatch } from "react-redux";
 import {
   removeFromCart,
-  removeSelectedProduct,
 } from "./../redux/action/ProductAction";
 
 function ShoppingList(props) {

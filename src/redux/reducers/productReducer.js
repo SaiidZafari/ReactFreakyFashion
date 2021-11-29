@@ -15,6 +15,29 @@ export const productReducer = (state = initialState, { type, payload }) => {
   }
 };
 
+export const herosReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.SET_HEROS:
+      return { ...state, products: payload };
+    case ActionTypes.FETCH_HEROS:
+      return { ...state, products: payload };
+    default:
+      return state;
+  }
+};
+
+export const spotsReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.SET_SPOTS:
+      return { ...state, products: payload };
+    case ActionTypes.FETCH_SPOTS:
+      return { ...state, products: payload };
+    default:
+      return state;
+  }
+};
+
+
 export const selectedProductReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.SELECTED_PRODUCT:
@@ -54,7 +77,7 @@ export const shoppingCartReducer = (state = [], action) => {
 
     case ActionTypes.REMOVE_FROM_CART:
       // state.filter((item) => item.id !== action.payload.id);
-      state.pop()
+      state.pop();
       return [...state]
 
     default:
