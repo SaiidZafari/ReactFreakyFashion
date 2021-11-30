@@ -52,6 +52,15 @@ export const selectedProductReducer = (state = {}, { type, payload }) => {
   }
 };
 
+export const selectedHeroReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.SELECTED_HERO:     
+      return { ...state, ...payload };
+    default:
+      return state;
+  }
+};
+
 export const searchedProductsReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.SEARCH_PRODUCTS:

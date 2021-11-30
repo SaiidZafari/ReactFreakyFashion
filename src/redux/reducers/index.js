@@ -5,6 +5,7 @@ import {
   shoppingCartReducer,
   searchedProductsReducer,
   herosReducer,
+  selectedHeroReducer,
   spotsReducer,
 } from "./productReducer";
 
@@ -12,6 +13,7 @@ import {
 const reducers = combineReducers({
   allProducts: productReducer,
   heros: herosReducer,
+  hero: selectedHeroReducer,
   spots : spotsReducer,
   product: selectedProductReducer,
   shoppingCart: shoppingCartReducer,

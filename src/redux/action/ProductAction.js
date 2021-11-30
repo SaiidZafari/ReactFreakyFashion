@@ -3,6 +3,11 @@ import ApiData from "../../Services/ApiData";
 
 //------- Set up to use Thunk ---------------
 // Convert async creator to a sync creator
+export const fetchProducts = () => async (dispatch) => {
+  const response = await ApiData.get("/products");
+  dispatch({ type: ActionTypes.FETCH_PRODUCTS, payload: response.data });
+};
+
 export const fetchHeros = () => async (dispatch) => {
   const response = await ApiData.get("/heros");
   dispatch({ type: ActionTypes.FETCH_HEROS, payload: response.data });
@@ -13,14 +18,14 @@ export const fetchSpots = () => async (dispatch) => {
   dispatch({ type: ActionTypes.FETCH_SPOTS, payload: response.data });
 };
 
-export const fetchProducts = () => async (dispatch) => {
-  const response = await ApiData.get("/products");
-  dispatch({ type: ActionTypes.FETCH_PRODUCTS, payload: response.data });
-};
-
 export const fetchProduct = (urlSlug) => async (dispatch) => {
   const response = await ApiData.get(`/products/${urlSlug}`);
   dispatch({ type: ActionTypes.SELECTED_PRODUCT, payload: response.data });
+};
+
+export const fetchHero = (urlSlug) => async (dispatch) => {
+  const response = await ApiData.get(`/heros/${urlSlug}`);
+  dispatch({ type: ActionTypes.SELECTED_HERO, payload: response.data });
 };
 
 export const searchProducts = (urlSlug) => async (dispatch) => {
