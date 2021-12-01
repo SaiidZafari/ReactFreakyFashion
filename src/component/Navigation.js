@@ -7,7 +7,7 @@ function Navigation(props) {
   const menuLink = [
     { id:1, link: "Home", path: "/" },
     { id:2, link: "Products", path: "/products" },
-    { id:3, link: "ShoppingList", path: "/shoppingList" },
+    { id:3, link: "Invoice", path: "/invoice" },
     { id:4, link: "Search", path: "/search" },
   ];
  

@@ -71,6 +71,25 @@ export const searchedProductsReducer = (state = {}, { type, payload }) => {
   }
 };
 
+export const invoiceReducer = (state = [], action) => {
+  switch (action.type) {
+    case ActionTypes.ADD_TO_INVOICE:
+      const customerInfo = state.find((item) => item.id === action.payload.id);
+
+      if (customerInfo) {
+        customerInfo.quantity += 1;
+        const products = state.filter((item) => item.id !== customerInfo.id);
+        return [...products, customerInfo];
+      }
+      action.payload.quantity = 1;
+      return [...state, action.payload];
+
+    default:
+      return state;
+  }
+};
+
+
 export const shoppingCartReducer = (state = [], action) => {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART:

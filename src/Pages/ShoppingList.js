@@ -6,6 +6,7 @@ import {
   removeFromCart,
 } from "./../redux/action/ProductAction";
 
+
 function ShoppingList(props) {
   let shoppingsCart = useSelector((state) => state.shoppingCart);
 
@@ -111,7 +112,7 @@ function ShoppingList(props) {
           </thead>
         </table>
       </div>
-      <CustomerInfo />
+      <CustomerInfo customerBuy={shoppingsCart} />
     </>
   );
 }

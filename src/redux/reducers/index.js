@@ -7,6 +7,7 @@ import {
   herosReducer,
   selectedHeroReducer,
   spotsReducer,
+  invoiceReducer,
 } from "./productReducer";
 
 
@@ -18,6 +19,7 @@ const reducers = combineReducers({
   product: selectedProductReducer,
   shoppingCart: shoppingCartReducer,
   searchedProducts: searchedProductsReducer,
+  invoice: invoiceReducer,
 });
 
 

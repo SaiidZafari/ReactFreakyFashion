@@ -9,11 +9,12 @@ import { useEffect } from "react";
 import Counter from "./component/Counter";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchHeros,
+  fetchHero,
   fetchProducts,
   fetchSpots,
 } from "./redux/action/ProductAction";
 import LoginForm from './component/LoginForm';
+import Invoice from './Pages/Invoice';
 
 function App() {
   // const [searchTerm, setSearchTerm] = useState("");
@@ -34,14 +35,13 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchHeros());
     dispatch(fetchProducts());
     dispatch(fetchSpots());
-    
+    dispatch(fetchHero("Woman"));
   }, [dispatch]);
 
   // const productsRedux = useSelector((state) => state.allProducts.products);
-   const heroData = useSelector((state) => state.heros.products);
+  const hero = useSelector((state) => state.hero);
   // const spotsRedux = useSelector((state) => state.spots.products);
 
   // productsData={productsRedux} heroData={herosRedux} spotsData={spotsRedux}
@@ -49,11 +49,12 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" exact element={<Home heroData={heroData} />} />
+        <Route path="/" exact element={<Home heroData={hero} />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:urlSlug" element={<Details />} />
         <Route path="/shoppingList" element={<ShoppingList />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/invoice" element={<Invoice />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/login" element={<LoginForm />} />
         <Route /> 404 Not Fount! <Route />

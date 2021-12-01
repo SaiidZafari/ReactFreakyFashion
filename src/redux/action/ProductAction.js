@@ -46,7 +46,6 @@ export const searchProducts = (urlSlug) => async (dispatch) => {
 // }
 
 //------------------------------------------
-
 export const setProducts = (products) => {
   return {
     type: ActionTypes.SET_PRODUCTS,
@@ -78,6 +77,13 @@ export const removeSelectedProduct = () => {
 export const addToCart = (product) => {
   return {
     type: ActionTypes.ADD_TO_CART,
+    payload: product,
+  };
+};
+
+export const addToInvoice = (product) => {
+  return {
+    type: ActionTypes.ADD_TO_INVOICE,
     payload: product,
   };
 };

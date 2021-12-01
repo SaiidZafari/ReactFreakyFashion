@@ -1,64 +1,53 @@
 import React,{useState, useEffect} from "react";
 import { Card } from "react-bootstrap";
+import { addToInvoice } from './../redux/action/ProductAction';
+import { useDispatch } from 'react-redux';
+import { ActionTypes } from './../redux/constants/action-types';
 
-function CustomerInfo() {
+function CustomerInfo({customerBuy}) {
+
+  const [valueFN, setValueFN] = useState("");
+  const [valueLN, setValueLN] = useState("");
+   const [valueEM, setValueEM] = useState("");
+   const [valuePW, setValuePW] = useState("");
+
+  const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-   // const application = { ...formFields };
 
-  //  const [formFields, setFormFields] = useState ({
-  //    firstName: "",
-  //    lastName: "",
-  //    email: "",
-  //    password: "",
-  //  });
+    console.log("firsName : ", valueFN);
+    console.log("lastName : ", valueLN);
+    console.log("Email : ", valueEM);
+    console.log("password : ", valuePW);
 
-  //  const [programs, setPrograms] = useState([]);
+    const customerData = {
+      customerInfo: [
+        {
+          firstName: valueFN,
+          lastName: valueLN,
+          email: valueEM,
+          password: valuePW,
+        },
+        {
+          buy: [customerBuy],
+        },
+      ],
+    };
 
-  //  useEffect(() => {
-  //    async function fetchData() {
-  //      const response = await fetch("http://localhost:5000/api/programs");
+    console.log(customerData);
 
-  //      const programs = await response.json();
+    dispatch(addToInvoice(customerData));
 
-  //      setPrograms(programs);
-  //    }
-
-  //    fetchData();
-
-  //    // Alternativt, utan async/await
-  //    // fetch("http://localhost:5000/api/programs")
-  //    //   .then(resp => resp.json())
-  //    //   .then(programs => setPrograms(programs));
-  //  }, []);
-
-  //  const handleSubmit = (event) => {
-  //    event.preventDefault();
-
-  //    const application = { ...formFields };
-
-  //    fetch("http://localhost:5000/api/applications", {
-  //      method: "post",
-  //      headers: {
-  //        "Content-Type": "application/json",
-  //      },
-  //      body: JSON.stringify(application),
-  //    }).then((resp) => {
-  //      console.log(application);
-
-  //      alert("Tack för ansökan, vi kommer kontakta dig");
-
-  //      setFormFields({
-        
-  //        firstName: "",
-  //        lastName: "",
-  //        email: "",
-  //        password: "",
-  //      });
-  //    });
-  //  };
+    // window.location.href = '/';
   }
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+ 
 
   return (
     <div className="CustomerInfo mt-2  text-start">
@@ -72,27 +61,67 @@ function CustomerInfo() {
         >
           <div className="CustomerInfo-content d-flex mt-3">
             <div className="form-group d-flex col-md-6 me-2">
-              <label htmlFor="username" className="col-md-3">
+              <label htmlFor="firstName" className="col-md-3">
                 Firs Name
               </label>
-              <input id="username" type="text" className="form-control" />{" "}
+              <input
+                name="firstName"
+                type="text"
+                className="form-control"
+                label="First name"
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setValueFN(value);
+                  setFirstName(value);
+                }}
+              />
             </div>
             <div className="form-group d-flex col-md-6">
-              <label htmlFor="password" className="col-md-3 ms-2">
+              <label htmlFor="lastName" className="col-md-3 ms-2">
                 Last Name
               </label>
-              <input id="password" type="text" className="form-control" />{" "}
+              <input
+                name="lastName"
+                type="text"
+                className="form-control"
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setValueLN(value);
+                  setLastName(value);
+                }}
+              />
             </div>
           </div>
-          <div className="form-group mt-3 mb-3">
-            <label htmlFor="username">Email</label>
-            <input id="username" type="text" className="form-control" />{" "}
+          <div className="form-group mt-3 mb-3 col-md-6">
+            <label htmlFor="email">Email</label>
+            <input
+              name="email"
+              type="text"
+              className="form-control"
+              onChange={(e) => {
+                const value = e.target.value;
+                setValueEM(value);
+                setEmail(value);
+              }}
+            />
           </div>
-          <div className="form-group">
+          <div className="form-group mt-3 mb-3 col-md-6">
             <label htmlFor="password">Password</label>
-            <input id="password" type="password" className="form-control" />{" "}
+            <input
+              name="password"
+              type="password"
+              className="form-control"
+              onChange={(e) => {
+                const value = e.target.value;
+                setValuePW(value);
+                setPassword(value);
+              }}
+            />
           </div>
-          <button type="submit" className="btn btn-primary offset-md-3 col-md-6 mt-3 mb-3">
+          <button
+            type="submit"
+            className="btn btn-primary offset-md-3 col-md-6 mt-3 mb-3"
+          >
             Buy
           </button>
         </form>

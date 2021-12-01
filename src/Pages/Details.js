@@ -1,11 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchProduct,
-  addToCart,
-} from "../redux/action/ProductAction";
-
+import {fetchProduct, addToCart,} from "../redux/action/ProductAction";
+import { Card } from "react-bootstrap";
 
 function Details() {
 
@@ -29,6 +26,8 @@ function Details() {
 
   return (
     <div id="pForm" className="Details ">
+      <h1> Details </h1>
+      <Card />
       <h3 className="m-3 text-start text-info">{pageName}</h3>
       {Object.keys(productRedux).length === 0 ? (
         <div>...Loading</div>
