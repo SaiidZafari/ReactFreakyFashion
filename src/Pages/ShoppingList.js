@@ -48,7 +48,7 @@ function ShoppingList(props) {
               <th>Image</th>
               <th>Name</th>
               <th>Price</th>
-              <th>Numder</th>
+              <th>Number</th>
               <th>Total</th>
               <th></th>
             </tr>

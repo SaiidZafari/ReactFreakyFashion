@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
-import { useSelector } from 'react-redux';
 
 function Hero({titleHero, descriptionHero, buttonTextHero, imageUrlHero, altHero}) {
  

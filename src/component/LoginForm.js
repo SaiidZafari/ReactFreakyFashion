@@ -1,26 +1,71 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { setLogin } from './../redux/action/ProductAction';
 
 function LoginForm() {
 
-const handleSubmit = (e) => {
-    e.preventDefault();
+  const custInfo = useSelector((state) => state.invoice);
 
-    console.log("Submitted")
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+   const [valueEM, setValueEM] = useState("");
+   const [valuePW, setValuePW] = useState("");
+
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
+  
+  const handleSubmit = (e) => {
+    
+    e.preventDefault();    
+
+  console.log("Submitted")
+    if (custInfo.email === valueEM && custInfo.password === valuePW) {     
+       
+      dispatch(setLogin(true));
+      navigate("/myPage");
+
+    } else {
+       
+      <h1> Wrong Email og Password</h1>
+      navigate("/wronglogin");
+    }
+  
+  
+
   };
 
   return (
     <div className="LoginForm">
-      <h1> LoginForm </h1>
+      <h1> Login </h1>
       <form onSubmit={handleSubmit} className="col-md-4 text-start">
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input id="username" type="text" className="form-control" />{" "}
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input id="password" type="text" className="form-control" />{" "}
-        </div>
+        <div className="form-group mt-3 mb-3 col-md-6">
+            <label htmlFor="email">Email</label>
+            <input
+              name="email"
+              type="text"
+              className="form-control"
+              onChange={(e) => {
+                const value = e.target.value;
+                setValueEM(value);
+                setEmail(value);
+              }}
+            />
+          </div>
+          <div className="form-group mt-3 mb-3 col-md-6">
+            <label htmlFor="password">Password</label>
+            <input
+              name="password"
+              type="password"
+              className="form-control"
+              onChange={(e) => {
+                const value = e.target.value;
+                setValuePW(value);
+                setPassword(value);
+              }}
+            />
+          </div>
         <button type="submit" className="btn btn-primary col-md-6 mt-3 mb-3">
           Login
         </button>

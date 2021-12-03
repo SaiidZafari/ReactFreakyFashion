@@ -53,6 +53,13 @@ export const setProducts = (products) => {
   };
 };
 
+export const setLogin = (access) => {
+  return {
+    type: ActionTypes.LOGIN_ACCESS,
+    payload: access,
+  };
+};
+
 export const setHeros = (products) => {
   return {
     type: ActionTypes.SET_HEROS,

@@ -3,51 +3,55 @@ import { Card } from "react-bootstrap";
 import { addToInvoice } from './../redux/action/ProductAction';
 import { useDispatch } from 'react-redux';
 import { ActionTypes } from './../redux/constants/action-types';
+import { useNavigate } from "react-router-dom";
 
-function CustomerInfo({customerBuy}) {
+function CustomerInfo({ customerBuy }) {
+  const navigate = useNavigate();
 
+  const [valueON, setValueON] = useState("");
+  const [valueDA, setValueDA] = useState("");
   const [valueFN, setValueFN] = useState("");
   const [valueLN, setValueLN] = useState("");
-   const [valueEM, setValueEM] = useState("");
-   const [valuePW, setValuePW] = useState("");
+  const [valueEM, setValueEM] = useState("");
+  const [valuePW, setValuePW] = useState("");
+
+  const [orderNo, setOrderNo] = useState("");
+  const [date, setDate] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
+    console.log("OrderNo : ", valueON);
+    console.log("date : ", valueDA);
     console.log("firsName : ", valueFN);
     console.log("lastName : ", valueLN);
     console.log("Email : ", valueEM);
     console.log("password : ", valuePW);
 
+   
+
     const customerData = {
-      customerInfo: [
-        {
-          firstName: valueFN,
-          lastName: valueLN,
-          email: valueEM,
-          password: valuePW,
-        },
-        {
-          buy: [customerBuy],
-        },
-      ],
+      orderNo: valueON,
+      date: valueDA,
+      firstName: valueFN,
+      lastName: valueLN,
+      email: valueEM,
+      password: valuePW,
+      buy: customerBuy,
     };
 
     console.log(customerData);
 
     dispatch(addToInvoice(customerData));
 
-    // window.location.href = '/';
-  }
-
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
- 
+    navigate("/");
+  };
 
   return (
     <div className="CustomerInfo mt-2  text-start">
@@ -59,6 +63,39 @@ function CustomerInfo({customerBuy}) {
           onSubmit={submitHandler}
           className="CustomerInfo flex-column fw-bold "
         >
+          <div className="CustomerInfo-content d-flex mt-3">
+            <div className="form-group d-flex col-md-6 me-2">
+              <label htmlFor="orderNo" className="col-md-3">
+                Order no.
+              </label>
+              <input
+                name="orderNo"
+                type="text"
+                className="form-control"
+                label="First name"
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setValueON(value);
+                  setOrderNo(value);
+                }}
+              />
+            </div>
+            <div className="form-group d-flex col-md-6">
+              <label htmlFor="date" className="col-md-3 ms-2">
+                Date
+              </label>
+              <input
+                name="date"
+                type="date"
+                className="form-control"
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setValueDA(value);
+                  setDate(value);
+                }}
+              />
+            </div>
+          </div>
           <div className="CustomerInfo-content d-flex mt-3">
             <div className="form-group d-flex col-md-6 me-2">
               <label htmlFor="firstName" className="col-md-3">

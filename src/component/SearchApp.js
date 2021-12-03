@@ -29,7 +29,7 @@ function SearchApp(props) {
   return (
     <form onSubmit={submitHandler}>
       <input
-        class="form-control"
+        className="form-control"
         type="search"
         placeholder="Search..."
         aria-label="/Search"

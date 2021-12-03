@@ -14,7 +14,7 @@ function Details() {
 
   useEffect(() => {
     if (urlSlug.length > 0) dispatch(fetchProduct(urlSlug));
-  }, [urlSlug]); // run every time urlSlug change
+  }, [urlSlug, dispatch]); // run every time urlSlug change
 
   //-----------------------------------------------
 

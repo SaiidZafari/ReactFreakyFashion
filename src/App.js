@@ -14,7 +14,9 @@ import {
   fetchSpots,
 } from "./redux/action/ProductAction";
 import LoginForm from './component/LoginForm';
-import Invoice from './Pages/Invoice';
+import MyPage from './Pages/MyPage';
+import WrongLogin from './Pages/WrongLogin';
+import Header from './component/Header';
 
 function App() {
   // const [searchTerm, setSearchTerm] = useState("");
@@ -54,9 +56,11 @@ function App() {
         <Route path="/products/:urlSlug" element={<Details />} />
         <Route path="/shoppingList" element={<ShoppingList />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/invoice" element={<Invoice />} />
+        <Route path="/myPage" element={<MyPage />} />
         <Route path="/counter" element={<Counter />} />
+        <Route path="/header" element={<Header />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/wronglogin" element={<WrongLogin />} />
         <Route /> 404 Not Fount! <Route />
       </Routes>
     </div>
