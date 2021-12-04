@@ -9,22 +9,16 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import store from './redux/store';
 import Navigation from './component/Navigation';
-import Header from './component/Header';
 import { Card } from 'react-bootstrap';
 import Footer from './component/Footer';
 import CopyRight from './component/CopyRight';
 
-// TODO: titta på redux thunks
-//store.dispatch(loadInitialData());
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
+  <Provider store={store}>
+    <BrowserRouter>
       <Navigation />
       <div className="container">
-        <Header pageTitle="Home" />
-        <Card />
-
         <App />
 
         <Card />
@@ -32,8 +26,8 @@ ReactDOM.render(
         <Card />
         <CopyRight />
       </div>
-    </Provider>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 

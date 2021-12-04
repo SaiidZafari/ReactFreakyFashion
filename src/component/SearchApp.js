@@ -13,10 +13,8 @@ function SearchApp(props) {
     e.target.reset();
     e.preventDefault();
     navigate(`/search?q=${searchTerm}`);
-    console.log(searchTerm);    
-  };
-
-      
+       
+  };     
 
       const dispatch = useDispatch();
 
@@ -24,7 +22,7 @@ function SearchApp(props) {
         if (searchTerm !== "") {
           dispatch(searchProducts(searchTerm));
         }
-      });
+      },[dispatch, searchTerm]);
 
   return (
     <form onSubmit={submitHandler}>

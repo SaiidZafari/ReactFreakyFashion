@@ -17,6 +17,7 @@ import LoginForm from './component/LoginForm';
 import MyPage from './Pages/MyPage';
 import WrongLogin from './Pages/WrongLogin';
 import Header from './component/Header';
+import { Card } from 'react-bootstrap';
 
 function App() {
   // const [searchTerm, setSearchTerm] = useState("");
@@ -34,6 +35,8 @@ function App() {
   //   }
   // };
 
+  const loginAccess = useSelector((state) => state.login);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -50,6 +53,8 @@ function App() {
 
   return (
     <div className="App">
+      <Header accessLogin={loginAccess} />
+      <Card />
       <Routes>
         <Route path="/" exact element={<Home heroData={hero} />} />
         <Route path="/products" element={<Products />} />
@@ -58,7 +63,6 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/myPage" element={<MyPage />} />
         <Route path="/counter" element={<Counter />} />
-        <Route path="/header" element={<Header />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/wronglogin" element={<WrongLogin />} />
         <Route /> 404 Not Fount! <Route />

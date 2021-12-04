@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import MenuLinkApp from './MenuLinkApp';
 import SearchApp from './SearchApp';
 
-function Navigation(props) {
+function Navigation() {
 
   const menuLink = [
     { id:1, link: "Home", path: "/" },
@@ -12,7 +12,6 @@ function Navigation(props) {
   ];
  
   
- console.log(props);
   return (
     <nav
       className="navbar navbar-expand-md navbar-dark bg-dark "

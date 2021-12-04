@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { setLogin } from './../redux/action/ProductAction';
 
 function LoginForm() {
 
-  const custInfo = useSelector((state) => state.invoice);
+  const customerInfo = useSelector((state) => state.invoice);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -13,17 +13,16 @@ function LoginForm() {
    const [valueEM, setValueEM] = useState("");
    const [valuePW, setValuePW] = useState("");
 
-   const [email, setEmail] = useState("");
-   const [password, setPassword] = useState("");
+  //  const [email, setEmail] = useState("");
+  //  const [password, setPassword] = useState("");
   
   const handleSubmit = (e) => {
     
     e.preventDefault();    
 
-  console.log("Submitted")
-    if (custInfo.email === valueEM && custInfo.password === valuePW) {     
-       
-      dispatch(setLogin(true));
+    if (customerInfo.email === valueEM && customerInfo.password === valuePW) {     
+      
+      dispatch(setLogin(false));
       navigate("/myPage");
 
     } else {
@@ -31,8 +30,6 @@ function LoginForm() {
       <h1> Wrong Email og Password</h1>
       navigate("/wronglogin");
     }
-  
-  
 
   };
 
@@ -49,7 +46,7 @@ function LoginForm() {
               onChange={(e) => {
                 const value = e.target.value;
                 setValueEM(value);
-                setEmail(value);
+                // setEmail(value);
               }}
             />
           </div>
@@ -62,7 +59,7 @@ function LoginForm() {
               onChange={(e) => {
                 const value = e.target.value;
                 setValuePW(value);
-                setPassword(value);
+                // setPassword(value);
               }}
             />
           </div>

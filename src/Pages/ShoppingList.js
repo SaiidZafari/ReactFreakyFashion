@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Counter from "../component/Counter";
 import CustomerInfo from "../component/CustomerInfo";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,16 +10,16 @@ import {
 function ShoppingList(props) {
   let shoppingsCart = useSelector((state) => state.shoppingCart);
 
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    const counter = JSON.parse(localStorage.getItem("counter"));
-    if (counter) {
-      setCount(counter);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const counter = JSON.parse(localStorage.getItem("counter"));
+  //   if (counter) {
+  //     setCount(counter);
+  //   }
+  // }, []);
 
-  console.log("SZ: ", count);
+ 
 
   const productsPrice = shoppingsCart.reduce(
     (a, c) => parseInt(a) + parseInt(c.price),
@@ -37,6 +37,8 @@ function ShoppingList(props) {
   if (shoppingsCart.length < 1 || !shoppingsCart) {
     return <div className="fs-2 fw-bold text-warning">Cart Is Empty</div>;
   }
+
+  
 
   return (
     <>

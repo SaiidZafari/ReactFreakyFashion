@@ -15,16 +15,16 @@ export const productReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export const herosReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case ActionTypes.SET_HEROS:
-      return { ...state, products: payload };
-    case ActionTypes.FETCH_HEROS:
-      return { ...state, products: payload };
-    default:
-      return state;
-  }
-};
+// export const herosReducer = (state = initialState, { type, payload }) => {
+//   switch (type) {
+//     case ActionTypes.SET_HEROS:
+//       return { ...state, products: payload };
+//     case ActionTypes.FETCH_HEROS:
+//       return { ...state, products: payload };
+//     default:
+//       return state;
+//   }
+// };
 
 export const spotsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -85,6 +85,9 @@ export const loginReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.LOGIN_ACCESS:
       return { ...state, access: payload };
+
+    case ActionTypes.LOGOUT_ACCESS:
+      return {};
 
     default:
       return state;

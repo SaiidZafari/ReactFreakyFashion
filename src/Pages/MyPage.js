@@ -11,10 +11,8 @@ function MyPage() {
     0
   );
 
-  console.log("sz: ", customer);
-
-  if (!customer) {
-    return <h1> Invoice Is Empty</h1>;
+  if (!shoppingCart || shoppingCart.length < 0) {
+    return <h1> The Page Is Empty.</h1>;
   }
 
   return (

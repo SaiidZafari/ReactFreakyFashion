@@ -1,8 +1,8 @@
-import React,{useState, useEffect} from "react";
+import React,{useState} from "react";
 import { Card } from "react-bootstrap";
 import { addToInvoice } from './../redux/action/ProductAction';
 import { useDispatch } from 'react-redux';
-import { ActionTypes } from './../redux/constants/action-types';
+// import { ActionTypes } from './../redux/constants/action-types';
 import { useNavigate } from "react-router-dom";
 
 function CustomerInfo({ customerBuy }) {
@@ -15,24 +15,24 @@ function CustomerInfo({ customerBuy }) {
   const [valueEM, setValueEM] = useState("");
   const [valuePW, setValuePW] = useState("");
 
-  const [orderNo, setOrderNo] = useState("");
-  const [date, setDate] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [orderNo, setOrderNo] = useState("");
+  // const [date, setDate] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    console.log("OrderNo : ", valueON);
-    console.log("date : ", valueDA);
-    console.log("firsName : ", valueFN);
-    console.log("lastName : ", valueLN);
-    console.log("Email : ", valueEM);
-    console.log("password : ", valuePW);
+    // console.log("OrderNo : ", valueON);
+    // console.log("date : ", valueDA);
+    // console.log("firsName : ", valueFN);
+    // console.log("lastName : ", valueLN);
+    // console.log("Email : ", valueEM);
+    // console.log("password : ", valuePW);
 
    
 
@@ -46,7 +46,7 @@ function CustomerInfo({ customerBuy }) {
       buy: customerBuy,
     };
 
-    console.log(customerData);
+    
 
     dispatch(addToInvoice(customerData));
 
@@ -76,7 +76,7 @@ function CustomerInfo({ customerBuy }) {
                 onChange={(e) => {
                   const value = e.target.value;
                   setValueON(value);
-                  setOrderNo(value);
+                  // setOrderNo(value);
                 }}
               />
             </div>
@@ -91,7 +91,7 @@ function CustomerInfo({ customerBuy }) {
                 onChange={(e) => {
                   const value = e.target.value;
                   setValueDA(value);
-                  setDate(value);
+                  // setDate(value);
                 }}
               />
             </div>
@@ -109,7 +109,7 @@ function CustomerInfo({ customerBuy }) {
                 onChange={(e) => {
                   const value = e.target.value;
                   setValueFN(value);
-                  setFirstName(value);
+                  // setFirstName(value);
                 }}
               />
             </div>
@@ -124,7 +124,7 @@ function CustomerInfo({ customerBuy }) {
                 onChange={(e) => {
                   const value = e.target.value;
                   setValueLN(value);
-                  setLastName(value);
+                  // setLastName(value);
                 }}
               />
             </div>
@@ -138,7 +138,7 @@ function CustomerInfo({ customerBuy }) {
               onChange={(e) => {
                 const value = e.target.value;
                 setValueEM(value);
-                setEmail(value);
+                // setEmail(value);
               }}
             />
           </div>
@@ -151,7 +151,7 @@ function CustomerInfo({ customerBuy }) {
               onChange={(e) => {
                 const value = e.target.value;
                 setValuePW(value);
-                setPassword(value);
+                // setPassword(value);
               }}
             />
           </div>

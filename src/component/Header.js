@@ -1,33 +1,23 @@
-// import { useState } from "react";
+ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from 'react';
 import { setLogin } from './../redux/action/ProductAction';
 
 
-
-
-function Header() {
-
-  const navigate = useNavigate();
+function Header({accessLogin} ) {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+   dispatch(setLogin(true));
+},[dispatch])
+
+  // const login = useSelector((state) => state.login)
+
   const shoppingCart = useSelector((state) => state.shoppingCart);
-  
-  const accessLogin = useSelector((state) => state.login);
 
-  const [access, setAccess] = useState(accessLogin);
-
- useEffect(() => {
-   dispatch(setLogin(access));
- });
-
-  const handleLogout = () => {
-   setAccess(false);
-    
-    return navigate("/");
+  const handleLogout = () => {   
+      dispatch(setLogin(true));
   }
  
   return (
@@ -63,7 +53,7 @@ function Header() {
             </div>
 
             <div className="mt-2">
-              {!accessLogin === false ? (
+              {(accessLogin.access) ? (
                 <Link to="/login">
                   <img
                     src={process.env.PUBLIC_URL + "/images/Login.png"}
@@ -72,13 +62,13 @@ function Header() {
                   />
                 </Link>
               ) : (
-                <form onClick={handleLogout}>
+                <Link to="/" onClick={handleLogout}>
                   <img
                     src={process.env.PUBLIC_URL + "/images/Logout.png"}
                     width="100px"
                     alt="Basket"
                   />
-                </form>
+                </Link>
               )}
             </div>
           </div>

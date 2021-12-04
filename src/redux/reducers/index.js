@@ -4,7 +4,7 @@ import {
   selectedProductReducer,
   shoppingCartReducer,
   searchedProductsReducer,
-  herosReducer,
+  // herosReducer,
   selectedHeroReducer,
   spotsReducer,
   invoiceReducer,
@@ -14,7 +14,7 @@ import {
 
 const reducers = combineReducers({
   allProducts: productReducer,
-  heros: herosReducer,
+  // heros: herosReducer,
   hero: selectedHeroReducer,
   spots : spotsReducer,
   product: selectedProductReducer,

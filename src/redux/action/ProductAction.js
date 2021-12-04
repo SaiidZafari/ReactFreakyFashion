@@ -60,12 +60,18 @@ export const setLogin = (access) => {
   };
 };
 
-export const setHeros = (products) => {
+export const setLogout = (product) => {
   return {
-    type: ActionTypes.SET_HEROS,
-    payload: products,
+    type: ActionTypes.LOGOUT_ACCESS,
   };
 };
+
+// export const setHeros = (products) => {
+//   return {
+//     type: ActionTypes.SET_HEROS,
+//     payload: products,
+//   };
+// };
 
 export const selectedProduct = (product) => {
   return {

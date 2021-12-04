@@ -1,5 +1,5 @@
 import React, {useState } from 'react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 
 function Counter({addId}) {
@@ -20,9 +20,9 @@ function Counter({addId}) {
  };
  
 
-  useEffect(() => {
-    localStorage.setItem("counter", JSON.stringify(count));
-  }, [count]);
+  // useEffect(() => {
+  //   localStorage.setItem("counter", JSON.stringify(count));
+  // }, [count]);
  
 return (
   <div>
