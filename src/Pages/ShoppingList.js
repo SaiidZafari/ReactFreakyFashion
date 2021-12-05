@@ -2,9 +2,7 @@ import { useState } from "react";
 import Counter from "../component/Counter";
 import CustomerInfo from "../component/CustomerInfo";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  removeFromCart,
-} from "./../redux/action/ProductAction";
+import {removeFromCart} from "./../redux/action/ProductAction";
 
 
 function ShoppingList(props) {
@@ -22,7 +20,7 @@ function ShoppingList(props) {
  
 
   const productsPrice = shoppingsCart.reduce(
-    (a, c) => parseInt(a) + parseInt(c.price),
+    (a, c) => parseInt(a) + parseInt(c.price) ,
     0
   );
 
@@ -31,14 +29,13 @@ function ShoppingList(props) {
   const dispatch = useDispatch();
 
   const removeHandle = (product) => {
-    dispatch(removeFromCart());
+   dispatch(removeFromCart(product));
   };
 
   if (shoppingsCart.length < 1 || !shoppingsCart) {
     return <div className="fs-2 fw-bold text-warning">Cart Is Empty</div>;
   }
 
-  
 
   return (
     <>
@@ -50,7 +47,7 @@ function ShoppingList(props) {
               <th>Image</th>
               <th>Name</th>
               <th>Price</th>
-              <th>Number</th>
+              <th>Quantity</th>
               <th>Total</th>
               <th></th>
             </tr>
@@ -76,14 +73,14 @@ function ShoppingList(props) {
                     <label>{product.price}</label>
                   </td>
                   <td>
-                    <Counter addId={index} />
+                    <Counter addId={index} urlSlug={product.urlSlug} />
                   </td>
                   <td>
-                    <label>{Counter}</label>
+                    <label>{product.price * product.quantity}</label>
                   </td>
                   <td>
                     <button
-                      onClick={() => removeHandle()}
+                      onClick={() => removeHandle(product)}
                       className="btn btn-danger col-ms-1"
                     >
                       Delete

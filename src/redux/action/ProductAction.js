@@ -66,12 +66,19 @@ export const setLogout = (product) => {
   };
 };
 
-// export const setHeros = (products) => {
-//   return {
-//     type: ActionTypes.SET_HEROS,
-//     payload: products,
-//   };
-// };
+export const addQuantity = (products) => {
+  return {
+    type: ActionTypes.ADD_QUANTITY,
+    payload: products,
+  };
+};
+
+export const removeQuantity = (products) => {
+  return {
+    type: ActionTypes.REMOVE_QUANTITY,
+    payload: products,
+  };
+};
 
 export const selectedProduct = (product) => {
   return {
@@ -104,7 +111,7 @@ export const addToInvoice = (product) => {
 export const removeFromCart = (product) => {
   return {
     type: ActionTypes.REMOVE_FROM_CART,
-    
+    payload: product,
   };
 };
 

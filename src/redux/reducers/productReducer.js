@@ -15,16 +15,16 @@ export const productReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-// export const herosReducer = (state = initialState, { type, payload }) => {
-//   switch (type) {
-//     case ActionTypes.SET_HEROS:
-//       return { ...state, products: payload };
-//     case ActionTypes.FETCH_HEROS:
-//       return { ...state, products: payload };
-//     default:
-//       return state;
-//   }
-// };
+export const herosReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.SET_HEROS:
+      return { ...state, products: payload };
+    case ActionTypes.FETCH_HEROS:
+      return { ...state, products: payload };
+    default:
+      return state;
+  }
+};
 
 export const spotsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -86,9 +86,6 @@ export const loginReducer = (state = {}, { type, payload }) => {
     case ActionTypes.LOGIN_ACCESS:
       return { ...state, access: payload };
 
-    case ActionTypes.LOGOUT_ACCESS:
-      return {};
-
     default:
       return state;
   }
@@ -126,15 +123,55 @@ export const shoppingCartReducer = (state = [], action) => {
       action.payload.quantity = 1;
       return [...state, action.payload];
 
+    case ActionTypes.REMOVE_QUANTITY:
+      const productR = state.find((item) => item.id === action.payload.id);
+
+      if (productR.quantity > 0 ) {
+        productR.quantity = productR.quantity - 1;
+        const products = state.filter((item) => item.id !== productR.id);
+        return [...products, productR];
+      }
+      
+      return [...state, action.payload];
+
     case ActionTypes.REMOVE_FROM_CART:
-      // state.filter((item) => item.id !== action.payload.id);
-      state.pop();
-      return [...state]
+      return state.filter((item) => item.id !== action.payload.id);
+    //state.pop();
+    // return [...state];
 
     default:
       return state;
   }
 };
+
+// export const quantityReducer = (state = [], action) => {
+//   switch (action.type) {
+//     case ActionTypes.ADD_QUANTITY:
+//       const product = state.find((item) => item.id === action.payload.id);
+
+//       if (product) {
+//         product.quantity += 1;
+//         const products = state.filter((item) => item.id !== product.id);
+//         return [...products, product];
+//       }
+//       action.payload.quantity = 1;
+//       return [...state, action.payload];
+
+//     case ActionTypes.REMOVE_QUANTITY:
+//      const productR = state.find((item) => item.id === action.payload.id);
+
+//       if (productR) {
+//         productR.quantity -= 1;
+//         const products = state.filter((item) => item.id !== productR.id);
+//         return [...products, productR];
+//       }
+//       action.payload.quantity = 1;
+//       return [...state, action.payload];
+
+//     default:
+//       return state;
+//   }
+// };
 
 
 
