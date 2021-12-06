@@ -7,9 +7,11 @@ function MyPage() {
   const shoppingCart = useSelector((state) => state.invoice.buy);
 
   const productsPrice = shoppingCart.reduce(
-    (a, c) => parseInt(a) + parseInt(c.price),
+    (a, c) => parseInt(a) + parseInt(c.price) * c.quantity,
     0
   );
+
+   const pieces = shoppingCart.reduce((a, c) => a + c.quantity, 0);
 
   if (!shoppingCart || shoppingCart.length < 0) {
     return <h1> The Page Is Empty.</h1>;
@@ -18,11 +20,13 @@ function MyPage() {
   return (
     <div className="Invoice">
       <div className="Invoice-content">
-        <h3> My Page </h3>
+        <h3>
+          {customer.firstName} {customer.lastName}
+        </h3>
         <Card />
         <div className=" text-start text-info mt-3">
           <p>
-            <span className="text-dark fw-bold">Name:</span>{" "}
+            <span className="text-dark fw-bold">Customer:</span>{" "}
             {customer.firstName} {customer.lastName}
           </p>
           <p>
@@ -38,6 +42,7 @@ function MyPage() {
           <tr className="fs-5 border-bottom">
             <th>Oreder No.</th>
             <th>Date</th>
+            <th>Item</th>
             <th>Quantity</th>
             <th>Total</th>
           </tr>
@@ -53,6 +58,9 @@ function MyPage() {
             </td>
             <td>
               <label>{shoppingCart.length}</label>
+            </td>
+            <td>
+              <label>{pieces}</label>
             </td>
             <td>
               <label>{productsPrice}</label>

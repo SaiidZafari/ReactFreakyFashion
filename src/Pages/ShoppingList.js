@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Counter from "../component/Counter";
 import CustomerInfo from "../component/CustomerInfo";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,27 +6,33 @@ import {removeFromCart} from "./../redux/action/ProductAction";
 
 
 function ShoppingList(props) {
-  let shoppingsCart = useSelector((state) => state.shoppingCart);
+  const shoppingsCart = useSelector((state) => state.shoppingCart);
 
-  // const [count, setCount] = useState(0);
+   const [cart, setCart] = useState(0);
 
-  // useEffect(() => {
-  //   const counter = JSON.parse(localStorage.getItem("counter"));
-  //   if (counter) {
-  //     setCount(counter);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (shoppingsCart) {
+      setCart(shoppingsCart);
+    }
+  }, [shoppingsCart.length]);
 
- 
+  const [totalPrice, setTotalprice] = useState(0);
 
   const productsPrice = shoppingsCart.reduce(
-    (a, c) => parseInt(a) + parseInt(c.price) ,
+    (a, c) => parseInt(a) + parseInt(c.price) * c.quantity ,
     0
   );
 
-  const [totalPrice] = useState(productsPrice);
+  const pieces = shoppingsCart.reduce(
+    (a,c) => a + c.quantity,0
+  );
+
+  useEffect(() => {
+    setTotalprice(productsPrice);
+ },[productsPrice])
 
   const dispatch = useDispatch();
+
 
   const removeHandle = (product) => {
    dispatch(removeFromCart(product));
@@ -54,8 +60,8 @@ function ShoppingList(props) {
           </thead>
 
           <tbody>
-            {shoppingsCart &&
-              shoppingsCart.map((product, index) => (
+            {cart &&
+              cart.map((product, index) => (
                 <tr className="fs-5 " key={index}>
                   <td className="col-1">
                     <img
@@ -73,7 +79,7 @@ function ShoppingList(props) {
                     <label>{product.price}</label>
                   </td>
                   <td>
-                    <Counter addId={index} urlSlug={product.urlSlug} />
+                    <Counter addId={index} product={product} />
                   </td>
                   <td>
                     <label>{product.price * product.quantity}</label>
@@ -95,18 +101,20 @@ function ShoppingList(props) {
           <thead>
             <tr className="border-bottom">
               <th>Invoice</th>
-            </tr>
+            </tr>            
             <tr>
-              <th>Number of Items</th>
+              <th>Items and Pieces</th>
             </tr>
             <tr className="border-bottom">
-              <th>{shoppingsCart.length}</th>
+              <th className="text-warning">
+                {shoppingsCart.length} and {pieces}{" "}
+              </th>
             </tr>
             <tr>
               <th>Total Price</th>
             </tr>
             <tr>
-              <th>{totalPrice}</th>
+              <th className="text-warning">{totalPrice}</th>
             </tr>
           </thead>
         </table>

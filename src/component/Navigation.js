@@ -8,7 +8,7 @@ function Navigation() {
     { id:1, link: "Home", path: "/" },
     { id:2, link: "Products", path: "/products" },
     { id:3, link: "MyPage", path: "/login" },
-    { id:4, link: "Search", path: "/search" },
+    // { id:4, link: "Search", path: "/search" },
   ];
  
   
@@ -21,7 +21,7 @@ function Navigation() {
         <Link
           style={{ fontFamily: "Edwardian Script ITC", fontSize: "1.5em" }}
           className="navbar-brand"
-          to="#"
+          to="/"
         >
           SZ
         </Link>

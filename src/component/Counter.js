@@ -7,11 +7,7 @@ import {
 ;
 
 
-function Counter({addId, urlSlug}) {
-
-  const products = useSelector((state) => state.allProducts.products);
-
-  const product = products.find(p => p.urlSlug === urlSlug);
+function Counter({addId, product}) {
 
   const [count, setCount] = useState(1);
 
@@ -26,7 +22,7 @@ function Counter({addId, urlSlug}) {
   };
 
  const formatCount = () => {
-   return count <= 1 ? 1 : count;
+   return product.quantity <= 0 ? 0 : product.quantity;
  };
  
   const dispatch = useDispatch();
